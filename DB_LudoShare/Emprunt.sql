@@ -8,10 +8,16 @@
     [DateRetour] DATETIME2 NULL,
     [EvaluationPreteur] TINYINT CHECK (EvaluationPreteur BETWEEN 0 AND 5),
     [EvaluationEmprunteur] TINYINT CHECK (EvaluationEmprunteur BETWEEN 0 AND 5),
-    [Etat] NVARCHAR(50) NOT NULL,
 
-    CONSTRAINT FK_Emprunt_UPJ FOREIGN KEY ([UPJ_Id]) REFERENCES [dbo].[Utilisateur_Posseder_Jeux]([UPJ_Id]) ON DELETE CASCADE,
-    CONSTRAINT FK_Emprunt_Prete FOREIGN KEY ([Preteur_Id]) REFERENCES [dbo].[Utilisateur]([Utilisateur_Id]) ON DELETE CASCADE,
-    CONSTRAINT FK_Emprunt_Emprunte FOREIGN KEY ([Emprunteur_Id]) REFERENCES [dbo].[Utilisateur]([Utilisateur_Id]) ON DELETE CASCADE,
-    CONSTRAINT CK_Emprunt_Etat CHECK ([Etat] IN ('Neuf', 'Abimé'))
+    CONSTRAINT FK_Emprunt_UPJ FOREIGN KEY ([UPJ_Id]) 
+        REFERENCES [dbo].[Utilisateur_Posseder_Jeux]([UPJ_Id]) 
+        ON DELETE CASCADE,
+
+    CONSTRAINT FK_Emprunt_Prete FOREIGN KEY ([Preteur_Id]) 
+        REFERENCES [dbo].[Utilisateur]([Utilisateur_Id]) 
+        ON DELETE CASCADE,
+
+    CONSTRAINT FK_Emprunt_Emprunte FOREIGN KEY ([Emprunteur_Id]) 
+        REFERENCES [dbo].[Utilisateur]([Utilisateur_Id]) 
+        ON DELETE CASCADE
 );
