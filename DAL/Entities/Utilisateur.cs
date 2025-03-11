@@ -10,7 +10,7 @@ namespace DAL.Entities
 		public Guid Utilisateur_Id { get; set; } = Guid.NewGuid();
 
 		[Required]
-		public byte[] MotDePasse { get; set; }
+		public string MotDePasse { get; set; }
 
 		[Required]
 		public Guid Salt { get; set; }

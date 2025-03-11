@@ -62,10 +62,11 @@ namespace DAL.Services
 			{
 				using (SqlCommand command = connection.CreateCommand())
 				{
-					command.CommandText = "INSERT INTO Utilisateur (Utilisateur_Id, Pseudo, MotDePasse, DateCreation) OUTPUT INSERTED.Utilisateur_Id VALUES (@Id, @Pseudo, @MotDePasse, GETDATE())";
+					command.CommandText = "SP_Utilisateur_Insert";
+					command.CommandType = CommandType.StoredProcedure;
 					command.Parameters.AddWithValue("@Id", user.Utilisateur_Id);
 					command.Parameters.AddWithValue("@Pseudo", user.Pseudo);
-					command.Parameters.AddWithValue("@MotDePasse", user.MotDePasse); // Plain password (DB handles hashing)
+					command.Parameters.AddWithValue("@MotDePasse", user.MotDePasse); 
 					connection.Open();
 
 					return (Guid)command.ExecuteScalar();

@@ -57,6 +57,7 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
+    <Folder Include="Stored Procedures" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Jeux.sql" />
@@ -67,6 +68,11 @@
     <Build Include="Etat.sql" />
     <Build Include="JeuxPossédés.sql" />
     <Build Include="InsertData.sql" />
+    <Build Include="Stored Procedures\SP_Utilisateur_Insert.sql" />
+    <Build Include="Stored Procedures\SP_Utilisateur_GetById.sql" />
+    <Build Include="Stored Procedures\SP_Utilisateur_UpdatePseudo.sql" />
+    <Build Include="Stored Procedures\SP_Utilisateur_Deactivate.sql" />
+    <Build Include="Stored Procedures\SP_Jeux_Insert.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DB_LudoShare.publish.xml" />
