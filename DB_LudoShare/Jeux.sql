@@ -9,5 +9,5 @@
 	[NbJoueurMax] TINYINT CHECK (NbJoueurMax >= NbJoueurMin),
 	[DureeMinute] SMALLINT CHECK (DureeMinute > 0),
 	[DateCreation] DATETIME2 NOT NULL DEFAULT GETDATE(),
-
+	CONSTRAINT CK_AgeMax CHECK (AgeMax >= AgeMin) 
 )
