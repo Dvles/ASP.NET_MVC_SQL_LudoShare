@@ -61,6 +61,8 @@
   <ItemGroup>
     <Build Include="Jeux.sql" />
     <Build Include="Utilisateur.sql" />
+    <Build Include="Tag.sql" />
+    <Build Include="Emprunt.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DB_LudoShare.publish.xml" />
