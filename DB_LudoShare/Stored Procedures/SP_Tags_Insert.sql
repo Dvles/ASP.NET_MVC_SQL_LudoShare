@@ -1,0 +1,10 @@
+﻿CREATE PROCEDURE SP_Tags_Insert
+    @Tag NVARCHAR(64)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    INSERT INTO Tag (Tag)
+    OUTPUT INSERTED.Tag_Id
+    VALUES (@Tag);
+END;

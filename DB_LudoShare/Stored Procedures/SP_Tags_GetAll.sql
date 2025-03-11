@@ -1,0 +1,9 @@
+﻿CREATE PROCEDURE SP_Tags_GetAll
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT Tag_Id, Tag
+    FROM Tag
+    ORDER BY Tag;
+END;

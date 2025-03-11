@@ -75,6 +75,9 @@
     <Build Include="Stored Procedures\SP_Jeux_Insert.sql" />
     <Build Include="Stored Procedures\SP_Jeux_GetById.sql" />
     <Build Include="Stored Procedures\SP_Jeux_GetAll_Filtered.sql" />
+    <Build Include="Stored Procedures\SP_Tags_GetAll.sql" />
+    <Build Include="Stored Procedures\SP_Tags_Insert.sql" />
+    <Build Include="Stored Procedures\SP_Tags_LinkToJeu.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DB_LudoShare.publish.xml" />

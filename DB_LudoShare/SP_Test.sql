@@ -1,11 +1,11 @@
-﻿---- 🔹 Insert Test Utilisateurs
+﻿--------🔹 Test Utilisateurs
 --EXEC SP_Utilisateur_Insert @Pseudo = 'User1', @MotDePasse = '000000';
 --EXEC SP_Utilisateur_Insert @Pseudo = 'User2', @MotDePasse = '000000';
 --EXEC SP_Utilisateur_Insert @Pseudo = 'User3', @MotDePasse = '000000';
 --EXEC SP_Utilisateur_Insert @Pseudo = 'User4', @MotDePasse = '000000';
 --EXEC SP_Utilisateur_Insert @Pseudo = 'User5', @MotDePasse = '000000';
 
-
+-------- 🔹 Test Jeux
 --EXEC SP_Jeux_Insert 
 --    @Nom = 'Catan',
 --    @Description = 'Un jeu de stratégie où les joueurs échangent et construisent',
@@ -51,7 +51,15 @@
 --    @NbJoueurMax = 4,
 --    @DureeMinute = 45;
 
-
 -- EXEC SP_Jeux_GetById @Jeux_Id = 'bec95a87-a051-4489-949b-109c4be46a79';
 
+
+
+--------🔹 Test TAG
+EXEC SP_Tags_Insert 'Dés';
+EXEC SP_Tags_Insert 'Stratégie';
+EXEC SP_Tags_Insert 'Cartes';
+EXEC SP_Tags_Insert 'Disney';
+EXEC SP_Tags_Insert 'Coopératif';
+EXEC SP_Tags_Insert 'Aventure';
 

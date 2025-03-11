@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [dbo].[Tag]
 (
 	[Tag_Id] INT NOT NULL PRIMARY KEY IDENTITY(1,1),
-	[Tag]   VARBINARY (64)   NOT NULL,
+	[Tag]   NVARCHAR(64)   NOT NULL,
 
 
 )
