@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35806.99 d17.13
+VisualStudioVersion = 17.13.35806.99
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "DB_LudoShare", "DB_LudoShare\DB_LudoShare.sqlproj", "{4ED20959-9A46-4D00-9774-2CA6B229702A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{F34CC0E5-EC22-4490-9FDF-3E2D7C7554C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{0651E487-C0EA-4292-BE0F-1CD591986ED4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,6 +21,14 @@ Global
 		{4ED20959-9A46-4D00-9774-2CA6B229702A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4ED20959-9A46-4D00-9774-2CA6B229702A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4ED20959-9A46-4D00-9774-2CA6B229702A}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{F34CC0E5-EC22-4490-9FDF-3E2D7C7554C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F34CC0E5-EC22-4490-9FDF-3E2D7C7554C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F34CC0E5-EC22-4490-9FDF-3E2D7C7554C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F34CC0E5-EC22-4490-9FDF-3E2D7C7554C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0651E487-C0EA-4292-BE0F-1CD591986ED4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0651E487-C0EA-4292-BE0F-1CD591986ED4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0651E487-C0EA-4292-BE0F-1CD591986ED4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0651E487-C0EA-4292-BE0F-1CD591986ED4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

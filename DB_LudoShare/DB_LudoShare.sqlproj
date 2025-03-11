@@ -65,7 +65,8 @@
     <Build Include="Emprunt.sql" />
     <Build Include="Associer_Jeux_Tag.sql" />
     <Build Include="Etat.sql" />
-    <Build Include="Utilisateur_Posseder_Jeux.sql" />
+    <Build Include="JeuxPossédés.sql" />
+    <Build Include="InsertData.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DB_LudoShare.publish.xml" />
