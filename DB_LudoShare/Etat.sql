@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[Etat]
+(
+    [Etat_Id]  UNIQUEIDENTIFIER NOT NULL  DEFAULT NEWID() PRIMARY KEY,
+    [Nom] NVARCHAR(50) NOT NULL   
+);
+
+
+
