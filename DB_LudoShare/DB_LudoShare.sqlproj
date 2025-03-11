@@ -78,6 +78,8 @@
     <Build Include="Stored Procedures\SP_Tags_GetAll.sql" />
     <Build Include="Stored Procedures\SP_Tags_Insert.sql" />
     <Build Include="Stored Procedures\SP_Tags_LinkToJeu.sql" />
+    <Build Include="Stored Procedures\SP_Associer_Jeux_Tag.sql" />
+    <Build Include="Stored Procedures\SP_Jeux_AjouterTag.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DB_LudoShare.publish.xml" />

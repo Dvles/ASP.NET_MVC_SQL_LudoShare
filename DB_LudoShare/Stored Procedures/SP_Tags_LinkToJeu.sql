@@ -5,6 +5,6 @@ AS
 BEGIN
     SET NOCOUNT ON;
 
-    INSERT INTO Jeux_Tags (Jeux_Id, Tag_Id)
+    INSERT INTO Associer_Jeux_Tags (Jeux_Id, Tag_Id)
     VALUES (@Jeux_Id, @Tag_Id);
 END;

@@ -15,7 +15,7 @@ BEGIN
         j.Jeux_Id, j.Nom, j.Description, j.AgeMin, j.AgeMax, 
         j.NbJoueurMin, j.NbJoueurMax, j.DureeMinute, j.DateCreation
     FROM Jeux j
-    LEFT JOIN Jeux_Tags jt ON j.Jeux_Id = jt.Jeux_Id
+    LEFT JOIN Associer_Jeux_Tag jt ON j.Jeux_Id = jt.Jeux_Id
     LEFT JOIN Tags t ON jt.Tag_Id = t.Tag_Id
     WHERE 
         (@NomPattern IS NULL OR j.Nom LIKE '%' + @NomPattern + '%')

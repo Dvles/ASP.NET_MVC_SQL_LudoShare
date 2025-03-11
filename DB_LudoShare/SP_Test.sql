@@ -56,10 +56,14 @@
 
 
 --------🔹 Test TAG
-EXEC SP_Tags_Insert 'Dés';
-EXEC SP_Tags_Insert 'Stratégie';
-EXEC SP_Tags_Insert 'Cartes';
-EXEC SP_Tags_Insert 'Disney';
-EXEC SP_Tags_Insert 'Coopératif';
-EXEC SP_Tags_Insert 'Aventure';
+--EXEC SP_Tags_Insert 'Dés';
+--EXEC SP_Tags_Insert 'Stratégie';
+--EXEC SP_Tags_Insert 'Cartes';
+--EXEC SP_Tags_Insert 'Disney';
+--EXEC SP_Tags_Insert 'Coopératif';
+--EXEC SP_Tags_Insert 'Aventure';
 
+
+
+EXEC dbo.SP_Jeux_AjouterTag '9bde17e4-9caa-465e-b0b5-16847344cdab9', 1;
+EXEC dbo.SP_Jeux_AjouterTag '9bde17e4-9caa-465e-b0b5-16847344cdab', 2;
