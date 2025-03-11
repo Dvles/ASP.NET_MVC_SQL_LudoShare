@@ -63,6 +63,7 @@
     <Build Include="Utilisateur.sql" />
     <Build Include="Tag.sql" />
     <Build Include="Emprunt.sql" />
+    <Build Include="Associer_Jeux_Tag.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DB_LudoShare.publish.xml" />
