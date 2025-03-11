@@ -15,9 +15,9 @@
 
     CONSTRAINT FK_Emprunt_Prete FOREIGN KEY ([Preteur_Id]) 
         REFERENCES [dbo].[Utilisateur]([Utilisateur_Id]) 
-        ON DELETE CASCADE,
+        ON DELETE NO ACTION,
 
     CONSTRAINT FK_Emprunt_Emprunte FOREIGN KEY ([Emprunteur_Id]) 
         REFERENCES [dbo].[Utilisateur]([Utilisateur_Id]) 
-        ON DELETE CASCADE
+        ON DELETE NO ACTION
 );
