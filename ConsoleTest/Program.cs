@@ -29,7 +29,7 @@ namespace ConsoleTest
 			/*			//DAL TEST INSERT
 						Utilisateur nouvelUtilisateur = new Utilisateur
 						{
-							Pseudo = "Lili",
+							Pseudo = "Jessica",
 							MotDePasse = "motdepasse123"
 						};
 
@@ -48,18 +48,18 @@ namespace ConsoleTest
 
 			/*			//DAL TEST UpdatePseudo
 
-						Guid utilisateurId = new Guid("88480a21-6666-48ba-9bac-6b0ed6d8c710"); 
-						string nouveauPseudo = "NewLili"; 
+			Guid utilisateurId = new Guid("c536b225-9dd6-48b4-8c61-a63d3cd37870");
+			string nouveauPseudo = "Boyaka";
 
-						try
-						{
-							utilisateurService.UpdatePseudo(utilisateurId, nouveauPseudo);
-							Console.WriteLine($"✅ Pseudo mis à jour pour:  {utilisateurId} !");
-						}
-						catch (Exception ex)
-						{
-							Console.WriteLine($"❌ Erreur: {ex.Message}");
-						}*/
+			try
+			{
+				utilisateurService.UpdatePseudo(utilisateurId, nouveauPseudo);
+				Console.WriteLine($"✅ Pseudo mis à jour pour:  {utilisateurId} !");
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine($"❌ Erreur: {ex.Message}");
+			}*/
 
 
 			/*						// DAL TEST GetByID
@@ -82,6 +82,8 @@ namespace ConsoleTest
 									{
 										Console.WriteLine($"Erreur : {ex.Message}");
 									}*/
+			
+			/* // DAL TEST SoftDelete
 
 						Guid utilisateurId = Guid.Parse("3622b822-c561-45d8-a20c-6a9141e5b8fa");
 
@@ -94,7 +96,7 @@ namespace ConsoleTest
 						catch (Exception ex)
 						{
 							Console.WriteLine($"Erreur : {ex.Message}");
-						}
+						}*/
 
 		}
 	}
