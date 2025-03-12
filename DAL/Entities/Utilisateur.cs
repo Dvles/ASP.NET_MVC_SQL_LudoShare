@@ -1,27 +1,17 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace DAL.Entities
 {
-	public class Utilisateur
-	{
-		[Key]
-		public Guid Utilisateur_Id { get; set; } = Guid.NewGuid();
-
-		[Required]
-		public string MotDePasse { get; set; }
-
-		[Required]
-		public Guid Salt { get; set; }
-
-		[Required]
-		[MaxLength(64)]
+    public class Utilisateur
+    {
+		public Guid Utilisateur_Id { get; set; }
 		public string Pseudo { get; set; }
-
-		[Required]
-		public DateTime DateCreation { get; set; } = DateTime.UtcNow;
-
+		public string MotDePasse { get; set; }
+		public DateTime DateCreation { get; set; }
 		public DateTime? DateDesactivation { get; set; }
 	}
 }

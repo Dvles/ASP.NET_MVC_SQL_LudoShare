@@ -65,5 +65,10 @@
 
 
 
-EXEC dbo.SP_Jeux_AjouterTag '9bde17e4-9caa-465e-b0b5-16847344cdab9', 1;
-EXEC dbo.SP_Jeux_AjouterTag '9bde17e4-9caa-465e-b0b5-16847344cdab', 2;
+--EXEC dbo.SP_Jeux_AjouterTag '9bde17e4-9caa-465e-b0b5-16847344cdab9', 1;
+--EXEC dbo.SP_Jeux_AjouterTag '9bde17e4-9caa-465e-b0b5-16847344cdab', 2;
+
+
+SELECT name, type_desc 
+FROM sys.objects 
+WHERE name = 'JeuxTag';
