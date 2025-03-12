@@ -90,5 +90,26 @@ namespace DAL.Services
 				}
 			}
 		}
+
+		public void Deactivate(Guid utilisateurId)
+		{
+			using (SqlConnection connection = new SqlConnection(connectionString))
+			{
+				using (SqlCommand command = connection.CreateCommand())
+				{
+					command.CommandText = "SP_Utilisateur_Deactivate";
+					command.CommandType = CommandType.StoredProcedure;
+					command.Parameters.AddWithValue("@UtilisateurId", utilisateurId);
+					connection.Open();
+					int rowsAffected = command.ExecuteNonQuery();
+
+					if (rowsAffected == 0)
+					{
+						throw new Exception("Aucun utilisateur trouvé avec cet ID.");
+					}
+				}
+			}
+		}
+
 	}
 }

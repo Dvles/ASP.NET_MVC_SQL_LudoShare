@@ -61,26 +61,40 @@ namespace ConsoleTest
 							Console.WriteLine($"❌ Erreur: {ex.Message}");
 						}*/
 
-						Guid utilisateurId = Guid.Parse("c0973b53-f248-4686-9fab-49e51fb55120");
+
+			/*						// DAL TEST GetByID
+									Guid utilisateurId = Guid.Parse("c0973b53-f248-4686-9fab-49e51fb55120");
+
+									try
+									{
+										// Récupération de l'utilisateur par ID
+										Utilisateur utilisateur = utilisateurService.GetById(utilisateurId);
+
+										// Affichage des informations récupérées
+										Console.WriteLine("Utilisateur trouvé !");
+										Console.WriteLine($"ID : {utilisateur.Utilisateur_Id}");
+										Console.WriteLine($"Pseudo : {utilisateur.Pseudo}");
+										Console.WriteLine($"Date de création : {utilisateur.DateCreation}");
+										Console.WriteLine($"Date de désactivation : {(utilisateur.DateDesactivation.HasValue ? utilisateur.DateDesactivation.Value.ToString() : "Actif")}");
+
+									}
+									catch (Exception ex)
+									{
+										Console.WriteLine($"Erreur : {ex.Message}");
+									}*/
+
+						Guid utilisateurId = Guid.Parse("3622b822-c561-45d8-a20c-6a9141e5b8fa");
 
 						try
 						{
-							// Récupération de l'utilisateur par ID
-							Utilisateur utilisateur = utilisateurService.GetById(utilisateurId);
-
-							// Affichage des informations récupérées
-							Console.WriteLine("Utilisateur trouvé !");
-							Console.WriteLine($"ID : {utilisateur.Utilisateur_Id}");
-							Console.WriteLine($"Pseudo : {utilisateur.Pseudo}");
-							Console.WriteLine($"Date de création : {utilisateur.DateCreation}");
-							Console.WriteLine($"Date de désactivation : {(utilisateur.DateDesactivation.HasValue ? utilisateur.DateDesactivation.Value.ToString() : "Actif")}");
-
+							// Désactiver l'utilisateur
+							utilisateurService.Deactivate(utilisateurId);
+							Console.WriteLine($"Utilisateur {utilisateurId} désactivé avec succès !");
 						}
 						catch (Exception ex)
 						{
 							Console.WriteLine($"Erreur : {ex.Message}");
 						}
-
 
 		}
 	}
