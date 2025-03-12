@@ -24,6 +24,7 @@ namespace BLL.Services
 			return _utilisateurRepository.Insert(utilisateur);
 		}
 
+
 		public void UpdatePseudo(Guid utilisateur_id, string pseudo)
 		{
 			_utilisateurRepository.UpdatePseudo(utilisateur_id, pseudo);
@@ -33,6 +34,7 @@ namespace BLL.Services
 		{
 			return _utilisateurRepository.GetById(utilisateur_id);
 		}
+
 
 		public void Deactivate(Guid utilisateur_id)
 		{
