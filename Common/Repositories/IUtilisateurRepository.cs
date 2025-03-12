@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace Common.Repositories
 {
-     public interface IUtilisateurRepository
+     public interface IUtilisateurRepository<TUtilisateur>
     {
 		
 		Guid CheckPassword(string pseudo, string motdepasse);
+		public Guid Insert(TUtilisateur utilisateur);
 	}
 }

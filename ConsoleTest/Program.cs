@@ -1,4 +1,5 @@
 ﻿using System;
+using DAL.Entities;
 using DAL.Services; // Assure-toi d'ajouter cette ligne pour utiliser ton service
 
 namespace ConsoleTest
@@ -7,29 +8,44 @@ namespace ConsoleTest
 	{
 		static void Main(string[] args)
 		{
-			Console.WriteLine("=== Test de l'authentification ===");
+			
 
-			// Instancier le service
 			UtilisateurService utilisateurService = new UtilisateurService();
+			/*			Console.WriteLine("=== Test de l'authentification ===");
+						//string pseudo = "TestUser";
+						//string motDePasse = "motdepasse123";
 
-			// Données fictives (assure-toi qu'elles existent en BDD)
-			string pseudo = "TestUser";
-			string motDePasse = "motdepasse123";
+						//Guid userId = utilisateurService.CheckPassword(pseudo, motDePasse);
 
-			// Tester la connexion
-			Guid userId = utilisateurService.CheckPassword(pseudo, motDePasse);
+						//if (userId == Guid.Empty)
+						//{
+						//	Console.WriteLine("❌ Échec de l'authentification : pseudo ou mot de passe incorrect.");
+						//}
+						//else
+						//{
+						//	Console.WriteLine($"✅ Authentification réussie ! User ID : {userId}");
+						//}*/
 
-			// Vérifier le résultat
-			if (userId == Guid.Empty)
+			Utilisateur nouvelUtilisateur = new Utilisateur
 			{
-				Console.WriteLine("❌ Échec de l'authentification : pseudo ou mot de passe incorrect.");
-			}
-			else
+				Pseudo = "Lili",
+				MotDePasse = "motdepasse123"
+			};
+
+			try
 			{
-				Console.WriteLine($"✅ Authentification réussie ! User ID : {userId}");
+				// Insertion dans la base et récupération de l'ID
+				Guid userId = utilisateurService.Insert(nouvelUtilisateur);
+
+				// Affichage du résultat
+				Console.WriteLine($"Utilisateur inséré avec succès ! ID: {userId}");
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine($"Erreur lors de l'insertion : {ex.Message}");
 			}
 
-			// Attendre l'entrée utilisateur pour voir le résultat avant que la console ne se ferme
+
 			Console.WriteLine("Appuyez sur une touche pour quitter...");
 			Console.ReadKey();
 		}

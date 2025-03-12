@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Services
 {
-    public class UtilisateurService : IUtilisateurRepository
+    public class UtilisateurService : IUtilisateurRepository<DAL.Entities.Utilisateur>
     {
 		private const string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=DB_LudoShare;Integrated Security=True;";
 
@@ -31,6 +31,20 @@ namespace DAL.Services
 
 		}
 
-
+		public Guid Insert(Utilisateur utilisateur)
+		{
+			using (SqlConnection connection = new SqlConnection(connectionString))
+			{
+				using (SqlCommand command = connection.CreateCommand())
+				{
+					command.CommandText = "SP_Utilisateur_Insert";
+					command.CommandType = CommandType.StoredProcedure;
+					command.Parameters.AddWithValue(nameof(Utilisateur.Pseudo), utilisateur.Pseudo);
+					command.Parameters.AddWithValue(nameof(Utilisateur.MotDePasse), utilisateur.MotDePasse);
+					connection.Open();
+					return (Guid)command.ExecuteScalar();
+				}
+			}
+		}
 	}
 }
