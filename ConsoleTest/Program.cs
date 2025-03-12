@@ -13,8 +13,8 @@ namespace ConsoleTest
 			UtilisateurService utilisateurService = new UtilisateurService();
 
 			// Données fictives (assure-toi qu'elles existent en BDD)
-			string pseudo = "MonPseudo";
-			string motDePasse = "MonMotDePasse";
+			string pseudo = "TestUser";
+			string motDePasse = "motdepasse123";
 
 			// Tester la connexion
 			Guid userId = utilisateurService.CheckPassword(pseudo, motDePasse);
@@ -30,4 +30,8 @@ namespace ConsoleTest
 			}
 
 			// Attendre l'entrée utilisateur pour voir le résultat avant que la console ne se ferme
-			Console.WriteLine("Appuyez sur une touche pou
+			Console.WriteLine("Appuyez sur une touche pour quitter...");
+			Console.ReadKey();
+		}
+	}
+}
