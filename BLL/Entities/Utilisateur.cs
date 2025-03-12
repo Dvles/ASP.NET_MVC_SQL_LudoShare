@@ -13,5 +13,15 @@ namespace BLL.Entities
 		public string MotDePasse { get; set; }
 		public DateTime DateCreation { get; set; }
 		public DateTime? DateDesactivation { get; set; }
+
+		public Utilisateur(Guid utilisateur_Id, string pseudo, DateTime dateCreation, DateTime? dateDesactivation)
+		{
+			Utilisateur_Id = utilisateur_Id;
+			Pseudo = pseudo;
+			DateCreation = dateCreation;
+			DateDesactivation = dateDesactivation;
+		}
+
+		public Utilisateur() { }
 	}
 }
