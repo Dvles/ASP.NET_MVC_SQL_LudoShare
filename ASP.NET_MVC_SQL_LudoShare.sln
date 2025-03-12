@@ -7,6 +7,8 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "DB_LudoShare", "DB_LudoShar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{06308D36-FB82-4218-8F88-CE86D8F6C869}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{DFF9CB48-1236-4E68-B48A-29552495E290}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,10 @@ Global
 		{06308D36-FB82-4218-8F88-CE86D8F6C869}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{06308D36-FB82-4218-8F88-CE86D8F6C869}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{06308D36-FB82-4218-8F88-CE86D8F6C869}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFF9CB48-1236-4E68-B48A-29552495E290}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFF9CB48-1236-4E68-B48A-29552495E290}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFF9CB48-1236-4E68-B48A-29552495E290}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFF9CB48-1236-4E68-B48A-29552495E290}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

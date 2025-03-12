@@ -58,6 +58,7 @@
   <ItemGroup>
     <Folder Include="Properties" />
     <Folder Include="Stored Procedures" />
+    <Folder Include="Functions" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Jeux.sql" />
@@ -80,6 +81,8 @@
     <Build Include="Stored Procedures\SP_Tags_LinkToJeu.sql" />
     <Build Include="Stored Procedures\SP_Associer_Jeux_Tag.sql" />
     <Build Include="Stored Procedures\SP_Jeux_AjouterTag.sql" />
+    <Build Include="Stored Procedures\SP_Utilisateur_CheckPassword.sql" />
+    <Build Include="Functions\SF_SaltAndHash.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DB_LudoShare.publish.xml" />
