@@ -26,28 +26,40 @@ namespace ConsoleTest
 						//	Console.WriteLine($"✅ Authentification réussie ! User ID : {userId}");
 						//}*/
 
-			Utilisateur nouvelUtilisateur = new Utilisateur
-			{
-				Pseudo = "Lili",
-				MotDePasse = "motdepasse123"
-			};
+			/*			//DAL TEST INSERT
+						Utilisateur nouvelUtilisateur = new Utilisateur
+						{
+							Pseudo = "Lili",
+							MotDePasse = "motdepasse123"
+						};
+
+						try
+						{
+							// Insertion dans la base et récupération de l'ID
+							Guid userId = utilisateurService.Insert(nouvelUtilisateur);
+
+							// Affichage du résultat
+							Console.WriteLine($"Utilisateur inséré avec succès ! ID: {userId}");
+						}
+						catch (Exception ex)
+						{
+							Console.WriteLine($"Erreur lors de l'insertion : {ex.Message}");
+						}*/
+
+			Guid utilisateurId = new Guid("88480a21-6666-48ba-9bac-6b0ed6d8c710"); 
+			string nouveauPseudo = "NewLili"; 
 
 			try
 			{
-				// Insertion dans la base et récupération de l'ID
-				Guid userId = utilisateurService.Insert(nouvelUtilisateur);
-
-				// Affichage du résultat
-				Console.WriteLine($"Utilisateur inséré avec succès ! ID: {userId}");
+				utilisateurService.UpdatePseudo(utilisateurId, nouveauPseudo);
+				Console.WriteLine($"✅ Pseudo mis à jour pour:  {utilisateurId} !");
 			}
 			catch (Exception ex)
 			{
-				Console.WriteLine($"Erreur lors de l'insertion : {ex.Message}");
+				Console.WriteLine($"❌ Erreur: {ex.Message}");
 			}
 
 
-			Console.WriteLine("Appuyez sur une touche pour quitter...");
-			Console.ReadKey();
 		}
 	}
 }

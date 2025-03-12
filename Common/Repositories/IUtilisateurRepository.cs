@@ -11,5 +11,7 @@ namespace Common.Repositories
 		
 		Guid CheckPassword(string pseudo, string motdepasse);
 		public Guid Insert(TUtilisateur utilisateur);
+		public void UpdatePseudo(Guid utilisateurId, string nouveauPseudo);
+
 	}
 }

@@ -46,5 +46,23 @@ namespace DAL.Services
 				}
 			}
 		}
+
+		public void UpdatePseudo(Guid utilisateurId, string nouveauPseudo)
+		{
+			using (SqlConnection connection = new SqlConnection(connectionString))
+			{
+				using (SqlCommand command = connection.CreateCommand())
+				{
+					command.CommandText = "SP_Utilisateur_UpdatePseudo";
+					command.CommandType = CommandType.StoredProcedure;
+					command.Parameters.AddWithValue("@UtilisateurId", utilisateurId);
+					command.Parameters.AddWithValue("@NouveauPseudo", nouveauPseudo);
+					connection.Open();
+					command.ExecuteNonQuery();
+				}
+			}
+		}
+
+
 	}
 }
