@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace DAL.Mapper
 {
 	internal static class Mappers
-    {
+	{
 		public static Utilisateur ToUtilisateur(this IDataRecord record)
 		{
 			if (record is null) throw new ArgumentNullException(nameof(record));
@@ -23,4 +23,5 @@ namespace DAL.Mapper
 			};
 
 		}
+	}
 }

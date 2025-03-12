@@ -46,18 +46,40 @@ namespace ConsoleTest
 							Console.WriteLine($"Erreur lors de l'insertion : {ex.Message}");
 						}*/
 
-			Guid utilisateurId = new Guid("88480a21-6666-48ba-9bac-6b0ed6d8c710"); 
-			string nouveauPseudo = "NewLili"; 
+			/*			//DAL TEST UpdatePseudo
 
-			try
-			{
-				utilisateurService.UpdatePseudo(utilisateurId, nouveauPseudo);
-				Console.WriteLine($"✅ Pseudo mis à jour pour:  {utilisateurId} !");
-			}
-			catch (Exception ex)
-			{
-				Console.WriteLine($"❌ Erreur: {ex.Message}");
-			}
+						Guid utilisateurId = new Guid("88480a21-6666-48ba-9bac-6b0ed6d8c710"); 
+						string nouveauPseudo = "NewLili"; 
+
+						try
+						{
+							utilisateurService.UpdatePseudo(utilisateurId, nouveauPseudo);
+							Console.WriteLine($"✅ Pseudo mis à jour pour:  {utilisateurId} !");
+						}
+						catch (Exception ex)
+						{
+							Console.WriteLine($"❌ Erreur: {ex.Message}");
+						}*/
+
+						Guid utilisateurId = Guid.Parse("c0973b53-f248-4686-9fab-49e51fb55120");
+
+						try
+						{
+							// Récupération de l'utilisateur par ID
+							Utilisateur utilisateur = utilisateurService.GetById(utilisateurId);
+
+							// Affichage des informations récupérées
+							Console.WriteLine("Utilisateur trouvé !");
+							Console.WriteLine($"ID : {utilisateur.Utilisateur_Id}");
+							Console.WriteLine($"Pseudo : {utilisateur.Pseudo}");
+							Console.WriteLine($"Date de création : {utilisateur.DateCreation}");
+							Console.WriteLine($"Date de désactivation : {(utilisateur.DateDesactivation.HasValue ? utilisateur.DateDesactivation.Value.ToString() : "Actif")}");
+
+						}
+						catch (Exception ex)
+						{
+							Console.WriteLine($"Erreur : {ex.Message}");
+						}
 
 
 		}
