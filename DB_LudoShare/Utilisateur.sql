@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [dbo].[Utilisateur]
 (
 	[Utilisateur_Id] UNIQUEIDENTIFIER NOT NULL DEFAULT NEWID() PRIMARY KEY,
-    [MotDePasse] VARBINARY (32)   NOT NULL,
+    [MotDePasse] VARBINARY (64)   NOT NULL,
     [Salt] UNIQUEIDENTIFIER NOT NULL,
     [Pseudo] NVARCHAR  (64)  NOT NULL,
     [DateCreation] DATETIME2  NOT NULL DEFAULT GETDATE(),

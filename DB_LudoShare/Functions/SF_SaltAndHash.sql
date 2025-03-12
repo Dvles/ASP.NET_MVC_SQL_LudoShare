@@ -1,6 +1,6 @@
 ﻿CREATE FUNCTION [dbo].[SF_SaltAndHash]
 (
-	@password NVARCHAR(32),
+	@password NVARCHAR(64),
 	@salt UNIQUEIDENTIFIER
 )
 RETURNS VARBINARY(64)

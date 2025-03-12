@@ -86,5 +86,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="DB_LudoShare.publish.xml" />
+    <None Include="SqlTest.sql" />
   </ItemGroup>
 </Project>
