@@ -1,10 +1,12 @@
 ﻿using System;
 using BLL.Services;
-using BLL.Entities;
+using b = BLL.Entities;
+using BLL.Mappers;
 using Common.Repositories;
 using FakeRepository;
-using B = BLL.Entities;
+using D = DAL.Entities;
 using System.Collections.Generic;
+using DAL.Services;
 
 namespace ConsoleTest
 {
@@ -65,7 +67,6 @@ namespace ConsoleTest
 				Console.WriteLine($"❌ Erreur: {ex.Message}");
 			}*/
 
-
 			/*						// DAL TEST GetByID
 									Guid utilisateurId = Guid.Parse("c0973b53-f248-4686-9fab-49e51fb55120");
 
@@ -103,22 +104,20 @@ namespace ConsoleTest
 						}*/
 
 
+			/*			// Initialisation du FakeRepository
+						IUtilisateurRepository<B.Utilisateur> fakeRepo = new FakeUtilisateurRepository();
+						UtilisateurService utilisateurService = new UtilisateurService(fakeRepo);
 
+						// Ajout manuel d'un utilisateur dans le FakeRepository
+						Utilisateur existingUser = new Utilisateur
+						{
+							Utilisateur_Id = Guid.Parse("c536b225-9dd6-48b4-8c61-a63d3cd37870"),
+							Pseudo = "Boyaka",
+							MotDePasse = "motdepasse123",
+							DateCreation = DateTime.Now
+						};*/
 
-			// Initialisation du FakeRepository
-			IUtilisateurRepository<B.Utilisateur> fakeRepo = new FakeUtilisateurRepository();
-			UtilisateurService utilisateurService = new UtilisateurService(fakeRepo);
-
-			// Ajout manuel d'un utilisateur dans le FakeRepository
-			Utilisateur existingUser = new Utilisateur
-			{
-				Utilisateur_Id = Guid.Parse("c536b225-9dd6-48b4-8c61-a63d3cd37870"),
-				Pseudo = "Boyaka",
-				MotDePasse = "motdepasse123",
-				DateCreation = DateTime.Now
-			};
-
-			// BLL TEST Insert
+			/*// BLL TEST Insert
 			fakeRepo.Insert(existingUser);
 			Console.WriteLine($"✅ Utilisateur inséré avec ID: {existingUser.Utilisateur_Id}");
 
@@ -151,7 +150,51 @@ namespace ConsoleTest
 
 			// BLL Test Deactive (soft delete)
 			utilisateurService.Deactivate(existingUser.Utilisateur_Id);
-			Console.WriteLine($"✅ Utilisateur {existingUser.Utilisateur_Id} désactivé.");
+			Console.WriteLine($"✅ Utilisateur {existingUser.Utilisateur_Id} désactivé.");*/
+
+			/*			// MAPPER TESTS -- Création d'un utilisateur DAL (imitating DB)
+			D.Utilisateur dalUser = new D.Utilisateur
+			{
+				Utilisateur_Id = Guid.NewGuid(),
+				Pseudo = "sabrina",
+				MotDePasse = "motdepasse123",
+				DateCreation = DateTime.Now
+			};
+
+			// Conversion DAL -> BLL
+			b.Utilisateur bllUser = dalUser.ToBLL();
+
+			// Vérification des valeurs
+			Console.WriteLine("=== Test ToBLL ===");
+			Check("ID", dalUser.Utilisateur_Id, bllUser.Utilisateur_Id);
+			Check("Pseudo", dalUser.Pseudo, bllUser.Pseudo);
+			Check("Mot de passe", dalUser.MotDePasse, bllUser.MotDePasse);
+			Check("Date de création", dalUser.DateCreation, bllUser.DateCreation);
+
+			// Conversion BLL -> DAL
+			D.Utilisateur convertedBackToDal = bllUser.ToDAL();
+
+
+			Console.WriteLine("\n=== Test ToDAL ===");
+			Check("ID", bllUser.Utilisateur_Id, convertedBackToDal.Utilisateur_Id);
+			Check("Pseudo", bllUser.Pseudo, convertedBackToDal.Pseudo);
+			Check("Mot de passe", bllUser.MotDePasse, convertedBackToDal.MotDePasse);
+			Check("Date de création", bllUser.DateCreation, convertedBackToDal.DateCreation);
+		}
+
+		static void Check<T>(string label, T expected, T actual)
+		{
+			if (expected.Equals(actual))
+			{
+				Console.WriteLine($"✅ {label} : OK ({expected})");
+			}
+			else
+			{
+				Console.WriteLine($"❌ {label} : ERREUR - attendu {expected}, obtenu {actual}");
+			}
+		}*/
+
 		}
 	}
 }
+

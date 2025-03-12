@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Mappers
 {
-	internal static class Mappers
+	public static class Mappers
     {
 		public static Utilisateur ToBLL(this D.Utilisateur utilisateur)
 		{
@@ -24,17 +24,17 @@ namespace BLL.Mappers
 			};
 		}
 
-		public static D.Utilisateur ToDAL(this Utilisateur Utilisateur)
+		public static D.Utilisateur ToDAL(this Utilisateur utilisateur)
 		{
-			if (Utilisateur == null) throw new ArgumentNullException(nameof(Utilisateur));
+			if (utilisateur == null) throw new ArgumentNullException(nameof(utilisateur));
 
 			return new D.Utilisateur
 			{
-				Utilisateur_Id = Utilisateur.Utilisateur_Id,
-				Pseudo = Utilisateur.Pseudo,
-				MotDePasse = Utilisateur.MotDePasse,
-				DateCreation = Utilisateur.DateCreation,
-				DateDesactivation = Utilisateur.DateDesactivation
+				Utilisateur_Id = utilisateur.Utilisateur_Id,
+				Pseudo = utilisateur.Pseudo,
+				MotDePasse = utilisateur.MotDePasse,
+				DateCreation = utilisateur.DateCreation,
+				DateDesactivation = utilisateur.DateDesactivation
 			};
 		}
 	}
