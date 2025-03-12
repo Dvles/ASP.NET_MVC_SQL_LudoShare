@@ -1,5 +1,6 @@
 ﻿using Common.Repositories;
 using DAL.Entities;
+using DAL.Mapper;
 using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
@@ -63,6 +64,31 @@ namespace DAL.Services
 			}
 		}
 
+		public Utilisateur GetById(Guid utilisateur_id)
+		{
+			using (SqlConnection connection = new SqlConnection(connectionString))
+			{
+				using (SqlCommand command = connection.CreateCommand())
+				{
+					command.CommandText = "SP_Utilisateur_GetById";
+					command.CommandType = CommandType.StoredProcedure;
+					command.Parameters.AddWithValue("@UtilisateurId", utilisateur_id);
 
+					connection.Open();
+					using (SqlDataReader reader = command.ExecuteReader())
+					{
+						if (reader.Read())
+						{
+							return reader.ToUtilisateur();
+						}
+						else
+						{
+							throw new ArgumentOutOfRangeException(nameof(utilisateur_id));
+						}
+
+					}
+				}
+			}
+		}
 	}
 }
