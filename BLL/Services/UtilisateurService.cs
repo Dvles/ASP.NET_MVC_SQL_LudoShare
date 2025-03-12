@@ -1,4 +1,4 @@
-﻿using BLL.Mapper;
+﻿using BLL.Mappers;
 using B = BLL.Entities;
 using Common.Repositories;
 using D = DAL.Entities;
@@ -11,8 +11,9 @@ using DAL.Entities;
 
 namespace BLL.Services
 {
-	public class UtilisateurService: IUtilisateurRepository<Utilisateur>
-    {
+	public class UtilisateurService : IUtilisateurRepository<B.Utilisateur>
+
+	{
 		private IUtilisateurRepository<D.Utilisateur> _utilisateurService;
 
 		public UtilisateurService(IUtilisateurRepository<D.Utilisateur> utilisateurService
@@ -26,20 +27,22 @@ namespace BLL.Services
 			return _utilisateurService.CheckPassword(pseudo, motDePasse);
 		}
 
-		public Guid Insert(Utilisateur utilisateur)
+		public Guid Insert(B.Utilisateur utilisateur)
 		{
 			return _utilisateurService.Insert(utilisateur.ToDAL());
 		}
+
 
 		public void UpdatePseudo(Guid utilisateur_id, string pseudo)
 		{
 			_utilisateurService.UpdatePseudo(utilisateur_id, pseudo);
 		}
 
-		public BLL.Entities.Utilisateur GetById(Guid utilisateur_id)
+		public B.Utilisateur GetById(Guid utilisateur_id)
 		{
 			return _utilisateurService.GetById(utilisateur_id).ToBLL();
 		}
+
 
 		public void Deactivate(Guid utilisateur_id)
 		{
