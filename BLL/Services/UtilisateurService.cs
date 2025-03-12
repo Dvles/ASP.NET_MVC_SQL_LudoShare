@@ -1,56 +1,42 @@
 ﻿using BLL.Mappers;
 using B = BLL.Entities;
 using Common.Repositories;
-using D = DAL.Entities;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DAL.Entities;
 
 namespace BLL.Services
 {
 	public class UtilisateurService : IUtilisateurRepository<B.Utilisateur>
-
 	{
-		private IUtilisateurRepository<D.Utilisateur> _utilisateurService;
+		private readonly IUtilisateurRepository<B.Utilisateur> _utilisateurRepository;
 
-		public UtilisateurService(IUtilisateurRepository<D.Utilisateur> utilisateurService
-			)
+		public UtilisateurService(IUtilisateurRepository<B.Utilisateur> utilisateurRepository)
 		{
-			_utilisateurService = utilisateurService;
+			_utilisateurRepository = utilisateurRepository;
 		}
 
 		public Guid CheckPassword(string pseudo, string motDePasse)
 		{
-			return _utilisateurService.CheckPassword(pseudo, motDePasse);
+			return _utilisateurRepository.CheckPassword(pseudo, motDePasse);
 		}
 
 		public Guid Insert(B.Utilisateur utilisateur)
 		{
-			return _utilisateurService.Insert(utilisateur.ToDAL());
+			return _utilisateurRepository.Insert(utilisateur);
 		}
-
 
 		public void UpdatePseudo(Guid utilisateur_id, string pseudo)
 		{
-			_utilisateurService.UpdatePseudo(utilisateur_id, pseudo);
+			_utilisateurRepository.UpdatePseudo(utilisateur_id, pseudo);
 		}
 
 		public B.Utilisateur GetById(Guid utilisateur_id)
 		{
-			return _utilisateurService.GetById(utilisateur_id).ToBLL();
+			return _utilisateurRepository.GetById(utilisateur_id);
 		}
-
 
 		public void Deactivate(Guid utilisateur_id)
 		{
-			_utilisateurService.Deactivate(utilisateur_id);
+			_utilisateurRepository.Deactivate(utilisateur_id);
 		}
-
-
-
-
 	}
 }

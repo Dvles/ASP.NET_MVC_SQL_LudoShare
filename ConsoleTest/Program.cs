@@ -1,6 +1,10 @@
 ﻿using System;
-using DAL.Entities;
-using DAL.Services; // Assure-toi d'ajouter cette ligne pour utiliser ton service
+using BLL.Services;
+using BLL.Entities;
+using Common.Repositories;
+using FakeRepository;
+using B = BLL.Entities;
+using System.Collections.Generic;
 
 namespace ConsoleTest
 {
@@ -8,9 +12,9 @@ namespace ConsoleTest
 	{
 		static void Main(string[] args)
 		{
-			
 
-			UtilisateurService utilisateurService = new UtilisateurService();
+
+			// UtilisateurService utilisateurService = new UtilisateurService();
 			/*			Console.WriteLine("=== Test de l'authentification ===");
 						//string pseudo = "TestUser";
 						//string motDePasse = "motdepasse123";
@@ -82,7 +86,7 @@ namespace ConsoleTest
 									{
 										Console.WriteLine($"Erreur : {ex.Message}");
 									}*/
-			
+
 			/* // DAL TEST SoftDelete
 
 						Guid utilisateurId = Guid.Parse("3622b822-c561-45d8-a20c-6a9141e5b8fa");
@@ -98,6 +102,56 @@ namespace ConsoleTest
 							Console.WriteLine($"Erreur : {ex.Message}");
 						}*/
 
+
+
+
+			// Initialisation du FakeRepository
+			IUtilisateurRepository<B.Utilisateur> fakeRepo = new FakeUtilisateurRepository();
+			UtilisateurService utilisateurService = new UtilisateurService(fakeRepo);
+
+			// Ajout manuel d'un utilisateur dans le FakeRepository
+			Utilisateur existingUser = new Utilisateur
+			{
+				Utilisateur_Id = Guid.Parse("c536b225-9dd6-48b4-8c61-a63d3cd37870"),
+				Pseudo = "Boyaka",
+				MotDePasse = "motdepasse123",
+				DateCreation = DateTime.Now
+			};
+
+			// BLL TEST Insert
+			fakeRepo.Insert(existingUser);
+			Console.WriteLine($"✅ Utilisateur inséré avec ID: {existingUser.Utilisateur_Id}");
+
+			// BLL TEST CheckPassword
+			Guid authenticatedUserId = utilisateurService.CheckPassword("Boyaka", "motdepasse123");
+
+			if (authenticatedUserId != Guid.Empty)
+			{
+				Console.WriteLine($"✅ Utilisateur authentifié avec ID: {authenticatedUserId}");
+			}
+			else
+			{
+				Console.WriteLine("❌ Échec de l'authentification : Pseudo ou mot de passe incorrect.");
+			}
+
+			// BLL TEST GetById
+			Utilisateur fetchedUser = utilisateurService.GetById(existingUser.Utilisateur_Id);
+			if (fetchedUser != null)
+			{
+				Console.WriteLine($"✅ Utilisateur récupéré: {fetchedUser.Pseudo}");
+			}
+			else
+			{
+				Console.WriteLine("❌ Utilisateur non trouvé.");
+			}
+
+			// BLL Test UpdatePseudo
+			utilisateurService.UpdatePseudo(existingUser.Utilisateur_Id, "UpdatedUser");
+			Console.WriteLine($"✅ Pseudo mis à jour pour l'utilisateur {existingUser.Utilisateur_Id}");
+
+			// BLL Test Deactive (soft delete)
+			utilisateurService.Deactivate(existingUser.Utilisateur_Id);
+			Console.WriteLine($"✅ Utilisateur {existingUser.Utilisateur_Id} désactivé.");
 		}
 	}
 }
