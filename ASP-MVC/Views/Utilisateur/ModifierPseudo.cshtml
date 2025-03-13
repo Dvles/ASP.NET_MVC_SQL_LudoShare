@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Modifier votre pseudo";
+}
+
+<h2>Modifier votre pseudo</h2>
+
+@if (ViewBag.Success != null)
+{
+    <div style="color: green;">@ViewBag.Success</div>
+}
+@if (ViewBag.Error != null)
+{
+    <div style="color: red;">@ViewBag.Error</div>
+}
+
+<form method="post">
+    <div>
+        <label>Nouveau Pseudo :</label>
+        <input type="text" name="nouveauPseudo" required />
+    </div>
+    <button type="submit">Modifier</button>
+</form>

@@ -75,5 +75,40 @@ namespace ASP_MVC.Controllers
 
 			return View(utilisateur);
 		}
+
+		// modifier pseudo
+		[HttpGet]
+		public IActionResult ModifierPseudo()
+		{
+			return View();
+		}
+
+		[HttpPost]
+		public IActionResult ModifierPseudo(string nouveauPseudo)
+		{
+			if (string.IsNullOrWhiteSpace(nouveauPseudo))
+			{
+				ViewBag.Error = "Le pseudo ne peut pas être vide.";
+				return View();
+			}
+
+			try
+			{
+				Guid userId = Guid.Parse(HttpContext.Session.GetString("UserId")!);
+				_utilisateurService.UpdatePseudo(userId, nouveauPseudo);
+				HttpContext.Session.SetString("UserPseudo", nouveauPseudo);
+
+				ViewBag.Success = "Votre pseudo a été mis à jour avec succès.";
+			}
+			catch (Exception ex)
+			{
+				ViewBag.Error = "Une erreur s'est produite : " + ex.Message;
+			}
+
+			return View();
+		}
+
+
+
 	}
 }
