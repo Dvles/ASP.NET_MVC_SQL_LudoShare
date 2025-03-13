@@ -7,6 +7,7 @@ using FakeRepository;
 using D = DAL.Entities;
 using System.Collections.Generic;
 using DAL.Services;
+using DAL.Entities;
 
 namespace ConsoleTest
 {
@@ -14,7 +15,7 @@ namespace ConsoleTest
 	{
 		static void Main(string[] args)
 		{
-
+			///// TEST UTILISATEUR ////
 
 			// UtilisateurService utilisateurService = new UtilisateurService();
 			/*			Console.WriteLine("=== Test de l'authentification ===");
@@ -103,7 +104,6 @@ namespace ConsoleTest
 							Console.WriteLine($"Erreur : {ex.Message}");
 						}*/
 
-
 			/*			// Initialisation du FakeRepository
 						IUtilisateurRepository<B.Utilisateur> fakeRepo = new FakeUtilisateurRepository();
 						UtilisateurService utilisateurService = new UtilisateurService(fakeRepo);
@@ -151,7 +151,6 @@ namespace ConsoleTest
 			// BLL Test Deactive (soft delete)
 			utilisateurService.Deactivate(existingUser.Utilisateur_Id);
 			Console.WriteLine($"✅ Utilisateur {existingUser.Utilisateur_Id} désactivé.");*/
-
 			/*			// MAPPER TESTS -- Création d'un utilisateur DAL (imitating DB)
 			D.Utilisateur dalUser = new D.Utilisateur
 			{
@@ -193,8 +192,36 @@ namespace ConsoleTest
 				Console.WriteLine($"❌ {label} : ERREUR - attendu {expected}, obtenu {actual}");
 			}
 		}*/
+			///// TEST JEUX ////
 
+			JeuxService jeuxService = new JeuxService();
+
+			Console.WriteLine("===== Test GetAll() =====");
+			foreach (Jeux jeu in jeuxService.GetAll())
+			{
+				Console.WriteLine($"{jeu.Jeux_Id} - {jeu.Nom} ({jeu.AgeMin}-{jeu.AgeMax} ans) {jeu.NbJoueurMin}-{jeu.NbJoueurMax} joueurs");
+			}
+
+			Console.WriteLine("\n===== Test Insert() =====");
+			Jeux nouveauJeu = new Jeux
+			{
+				Nom = "Wakanda",
+				Description = "Un jeu de tuiles stratégique",
+				AgeMin = 7,
+				AgeMax = 99,
+				NbJoueurMin = 2,
+				NbJoueurMax = 5,
+				DureeMinute = 45
+			};
+
+			Guid newGameId = jeuxService.Insert(nouveauJeu);
+			Console.WriteLine($"Jeu inséré avec succès =) Well done! ID: {newGameId}");
+
+			Console.WriteLine("\n===== Test GetById() =====");
+			Jeux jeuTrouve = jeuxService.GetById(newGameId);
+			Console.WriteLine($"Jeu trouvé: {jeuTrouve.Nom} - {jeuTrouve.Description}");
 		}
+
 	}
 }
 
