@@ -1,6 +1,9 @@
 ﻿@model IEnumerable<BLL.Entities.Jeux>
 
-<h1>Liste des Jeux</h1>
+<h1>TOP Jeux</h1>
+<p> Bientôt</p> @* emplacement pour les jeux les plus empruntés *@
+
+<h1>Tous les Jeux</h1>
 
 @if (Model != null && Model.Any())
 {
@@ -8,13 +11,19 @@
         @foreach (var jeu in Model)
         {
             <li>
-                <strong>@jeu.Nom</strong> - Âge: @jeu.AgeMin+ <br>
-                <small>@jeu.Description</small>
+                <strong>@jeu.Nom</strong><br>
+                Âge: @jeu.AgeMin+ <br>
+                <small>@jeu.Description</small><br>
+
+                <!-- Bouton "Voir plus" qui redirige vers la page détails du jeu -->
+                <a asp-controller="Jeux" asp-action="Details" asp-route-id="@jeu.Jeux_Id" class="btn btn-primary">
+                    Voir plus
+                </a>
             </li>
         }
     </ul>
 }
 else
 {
-    <p>Aucun jeu disponible.</p>
+    <p>Aucun jeu enregistrer dans la LudoShare.</p>
 }
