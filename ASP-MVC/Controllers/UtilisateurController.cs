@@ -116,33 +116,37 @@ namespace ASP_MVC.Controllers
 			return View();
 		}
 
+
 		[HttpPost]
 		public IActionResult DesactiverCompteConfirmation()
 		{
 			try
 			{
-				// Récupération de l'ID de l'utilisateur connecté
+				// Vérification de l'ID utilisateur
 				if (!Guid.TryParse(HttpContext.Session.GetString("UserId"), out Guid userId))
 				{
-					return RedirectToAction("Connexion", "Auth"); // Redirige vers la connexion si l'ID est introuvable
+					return RedirectToAction("Connexion", "Auth");
 				}
+
+				Console.WriteLine($"Désactivation de l'utilisateur {userId}");
 
 				// Désactiver l'utilisateur
 				_utilisateurService.Deactivate(userId);
+				Console.WriteLine("Désactivation réussie");
 
-				// Suppression de la session (déconnexion)
+				// Déconnecter l'utilisateur
 				HttpContext.Session.Clear();
 
 				return RedirectToAction("Connexion", "Auth");
 			}
 			catch (Exception ex)
 			{
-				ViewBag.Error = "Une erreur s'est prodiute : " + ex.Message;
+				Console.WriteLine($"Erreur: {ex.Message}");
+				ViewBag.Error = "Une erreur s'est produite : " + ex.Message;
 				return View("DesactiverCompte");
 			}
 		}
-
-
-
 	}
+
 }
+

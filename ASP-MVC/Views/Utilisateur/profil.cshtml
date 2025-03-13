@@ -2,8 +2,21 @@
 
 <h2>Mon Profil</h2>
 
+<!-- Affichage des informations de l'utilisateur -->
 <p><strong>Pseudo :</strong> @Model.Pseudo</p>
 <p><strong>Date de création :</strong> @Model.DateCreation.ToString("dd/MM/yyyy")</p>
 
-<a href="@Url.Action("ModifierPseudo", "Utilisateur")">Modifier mon pseudo</a> |
-<a href="@Url.Action("DesactiverCompte", "Utilisateur")" onclick="return confirm('Voulez-vous vraiment désactiver votre compte ?');">Désactiver mon compte</a>
+<!-- handlers pour navigation sécurisée -->
+<a asp-action="ModifierPseudo" asp-controller="Utilisateur">Modifier mon pseudo</a>
+
+<!-- Formulaire pour désactiver le compte -->
+
+<form asp-action="DesactiverCompte" asp-controller="Utilisateur" method="get"
+      onsubmit="return confirm('Voulez-vous vraiment désactiver votre compte ?');"
+      style="display:inline;">
+
+    <button type="submit"
+            style="background-color: red; color: white; border: none; padding: 5px 10px; cursor: pointer;">
+        Désactiver mon compte
+    </button>
+</form>

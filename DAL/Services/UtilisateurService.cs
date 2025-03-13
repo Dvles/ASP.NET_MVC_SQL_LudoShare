@@ -70,8 +70,7 @@ namespace DAL.Services
 				}
 			}
 		}
-
-		public Utilisateur GetById(Guid utilisateur_id)
+		public Utilisateur GetById(Guid utilisateurId)
 		{
 			using (SqlConnection connection = new SqlConnection(connectionString))
 			{
@@ -79,24 +78,32 @@ namespace DAL.Services
 				{
 					command.CommandText = "SP_Utilisateur_GetById";
 					command.CommandType = CommandType.StoredProcedure;
-					command.Parameters.AddWithValue("@UtilisateurId", utilisateur_id);
+					command.Parameters.AddWithValue("@UtilisateurId", utilisateurId);
 
 					connection.Open();
 					using (SqlDataReader reader = command.ExecuteReader())
 					{
 						if (reader.Read())
 						{
-							return reader.ToUtilisateur();
+							Utilisateur user = reader.ToUtilisateur();
+
+							// Check si l'utilisateur est désactivé
+							if (user.DateDesactivation != null)
+							{
+								throw new Exception("Compte désactivé. Veuillez contacter le support.");
+							}
+
+							return user;
 						}
 						else
 						{
-							throw new ArgumentOutOfRangeException(nameof(utilisateur_id));
+							throw new ArgumentOutOfRangeException(nameof(utilisateurId));
 						}
-
 					}
 				}
 			}
 		}
+
 
 		public void Deactivate(Guid utilisateurId)
 		{
