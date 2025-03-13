@@ -67,5 +67,47 @@ namespace ASP_MVC.Controllers
 			HttpContext.Session.Remove("UserPseudo");
 			return RedirectToAction("Connexion");
 		}
+
+
+		// Inscription
+		[HttpGet]
+		public IActionResult Inscription()
+		{
+			return View();
+		}
+
+		[HttpPost]
+		public IActionResult Inscription(AuthRegisterForm form)
+		{
+			if (!ModelState.IsValid) return View(form);
+
+			try
+			{
+				Utilisateur newUser = new Utilisateur
+				{
+					Pseudo = form.Pseudo,
+					MotDePasse = form.MotDePasse // Hashing du mot de passe au niveau de la BD
+				};
+
+				Guid userId = _utilisateurService.Insert(newUser);
+
+				if (userId != Guid.Empty)
+				{
+					HttpContext.Session.SetString("UserPseudo", form.Pseudo);
+					HttpContext.Session.SetString("UserId", userId.ToString());
+
+					return RedirectToAction("Index", "Home");
+				}
+
+				ViewBag.Error = "Erreur lors de l'inscription.";
+			}
+			catch (Exception ex)
+			{
+				ViewBag.Error = "Une erreur s'est produite : " + ex.Message;
+			}
+
+			return View(form);
+		}
+
 	}
 }
