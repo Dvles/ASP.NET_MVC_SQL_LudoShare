@@ -65,19 +65,12 @@ namespace ASP_MVC.Controllers
 		}
 
 
-
 		// Déconnexion et suppression de la session
 		public ActionResult Deconnexion()
 		{
 			HttpContext.Session.Remove("UserPseudo"); // (à config)
 			return RedirectToAction("Connexion");
 		}
-
-
-
-
-
-	
 
 	}
 }
