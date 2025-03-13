@@ -26,7 +26,14 @@ namespace DAL.Services
 					command.Parameters.AddWithValue(nameof(pseudo), pseudo);
 					command.Parameters.AddWithValue(nameof(motDePasse), motDePasse);
 					connection.Open();
-					return (Guid)command.ExecuteScalar();
+					object result = command.ExecuteScalar();
+
+					if (result == null || result == DBNull.Value)
+					{
+						return Guid.Empty; // Return an empty GUID instead of throwing an exception
+					}
+
+					return (Guid)result;
 				}
 			}
 

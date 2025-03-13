@@ -1,8 +1,8 @@
 ﻿DECLARE @NewUserId UNIQUEIDENTIFIER;
 
 EXEC SP_Utilisateur_Insert 
-    @Pseudo = 'TestUser',
-    @MotDePasse = 'motdepasse123',
-    @Utilisateur_Id = @NewUserId OUTPUT;  
+    @Pseudo = 'Leslie',
+    @MotDePasse = 'aaaaa',
+    @Utilisateur_Id = @NewUserId OUTPUT; -- Capture the output
 
-SELECT @NewUserId AS Utilisateur_Id;
+SELECT @NewUserId AS 'New User ID';

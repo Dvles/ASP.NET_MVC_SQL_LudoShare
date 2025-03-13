@@ -9,18 +9,11 @@ namespace ASP_MVC.Controllers
 {
 	public class AuthController : Controller
 	{
-		private readonly IUtilisateurRepository<BLL.Entities.Utilisateur> _utilisateurService;
+		private readonly UtilisateurService _utilisateurService;
 
-		public AuthController(IUtilisateurRepository<BLL.Entities.Utilisateur> utilisateurService)
+		public AuthController(UtilisateurService utilisateurService)
 		{
-			_utilisateurService = utilisateurService;
-		}
-
-
-		// Afficher le formulaire d'inscription
-		public ActionResult Inscription()
-		{
-			return View();
+			_utilisateurService = utilisateurService ?? throw new ArgumentNullException(nameof(utilisateurService));
 		}
 
 		[HttpGet]
@@ -35,6 +28,14 @@ namespace ASP_MVC.Controllers
 			try
 			{
 				if (!ModelState.IsValid) return View(form);
+
+				// Debug log: Check if _utilisateurService is null
+				Console.WriteLine($"_utilisateurService est null ? {_utilisateurService == null}");
+
+				if (_utilisateurService == null)
+				{
+					throw new Exception("_utilisateurService is NOT initialized! Check dependency injection.");
+				}
 
 				Guid userId = _utilisateurService.CheckPassword(form.Pseudo, form.MotDePasse);
 
@@ -51,10 +52,13 @@ namespace ASP_MVC.Controllers
 			}
 			catch (Exception ex)
 			{
+				Console.WriteLine($"Exception in Connexion: {ex.Message}");
 				ViewBag.Error = "Une erreur s'est produite : " + ex.Message;
 				return View(form);
 			}
 		}
+
+
 
 
 		// Déconnexion
