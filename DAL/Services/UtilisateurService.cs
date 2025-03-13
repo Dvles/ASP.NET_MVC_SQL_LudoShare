@@ -17,26 +17,26 @@ namespace DAL.Services
 
 		public Guid CheckPassword(string pseudo, string motDePasse)
 		{
-			using (SqlConnection connection = new SqlConnection(connectionString))
+			using (SqlConnection connection = new SqlConnection(connectionString)) // Création de la connexion SQL
 			{
-				using (SqlCommand command = connection.CreateCommand())
+				using (SqlCommand command = connection.CreateCommand()) // Création de la commande SQL
 				{
-					command.CommandText = "SP_Utilisateur_CheckPassword";
-					command.CommandType = CommandType.StoredProcedure;
-					command.Parameters.AddWithValue(nameof(pseudo), pseudo);
-					command.Parameters.AddWithValue(nameof(motDePasse), motDePasse);
-					connection.Open();
-					object result = command.ExecuteScalar();
+					command.CommandText = "SP_Utilisateur_CheckPassword"; // Nom du stored procedure
+					command.CommandType = CommandType.StoredProcedure; // Spécifie qu'on appelle un SP
+					command.Parameters.AddWithValue(nameof(pseudo), pseudo); // Ajoute le paramètre "pseudo"
+					command.Parameters.AddWithValue(nameof(motDePasse), motDePasse); // Ajoute le paramètre "motDePasse"
+
+					connection.Open(); // Ouvre la connexion à la base de données
+					object result = command.ExecuteScalar(); // Exécute la requête et retourne la première colonne du premier enregistrement
 
 					if (result == null || result == DBNull.Value)
 					{
-						return Guid.Empty; // Return an empty GUID instead of throwing an exception
+						return Guid.Empty; // Retourne un GUID vide si aucun utilisateur trouvé
 					}
 
-					return (Guid)result;
+					return (Guid)result; // Retourne l'ID de l'utilisateur
 				}
 			}
-
 		}
 
 		public Guid Insert(Utilisateur utilisateur)
@@ -50,7 +50,7 @@ namespace DAL.Services
 					command.Parameters.AddWithValue(nameof(Utilisateur.Pseudo), utilisateur.Pseudo);
 					command.Parameters.AddWithValue(nameof(Utilisateur.MotDePasse), utilisateur.MotDePasse);
 					connection.Open();
-					return (Guid)command.ExecuteScalar();
+					return (Guid)command.ExecuteScalar();  // Exécute la requête sans retour de valeur
 				}
 			}
 		}
@@ -66,7 +66,7 @@ namespace DAL.Services
 					command.Parameters.AddWithValue("@UtilisateurId", utilisateurId);
 					command.Parameters.AddWithValue("@NouveauPseudo", nouveauPseudo);
 					connection.Open();
-					command.ExecuteNonQuery();
+					command.ExecuteNonQuery(); // Exécute la mise à jour et récupère le nombre de lignes affectées
 				}
 			}
 		}
@@ -115,7 +115,7 @@ namespace DAL.Services
 					command.CommandType = CommandType.StoredProcedure;
 					command.Parameters.AddWithValue("@UtilisateurId", utilisateurId);
 					connection.Open();
-					int rowsAffected = command.ExecuteNonQuery();
+					int rowsAffected = command.ExecuteNonQuery(); 
 
 					if (rowsAffected == 0)
 					{

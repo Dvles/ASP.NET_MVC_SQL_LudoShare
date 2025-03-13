@@ -22,6 +22,8 @@ namespace BLL.Entities
 			DateDesactivation = dateDesactivation;
 		}
 
+
+		//  Constructeur sans paramètres pour la sérialisation et le mapping automatique (BLL/Mappers) - pour flexibilité
 		public Utilisateur() { }
 	}
 }

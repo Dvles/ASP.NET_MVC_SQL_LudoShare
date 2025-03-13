@@ -6,10 +6,16 @@ using System;
 
 namespace BLL.Services
 {
+	/// Service métier pour la gestion des utilisateurs, faisant le lien entre la BLL et la DAL.  
+
 	public class UtilisateurService : IUtilisateurRepository<B.Utilisateur>
 	{
+
+
+		// Référence au dépôt d'accès aux données des utilisateurs (DAL).  
 		private readonly IUtilisateurRepository<D.Utilisateur> _utilisateurRepository;
 
+		// Constructeur qui injecte le dépôt d'utilisateurs (DAL) pour gérer l'accès aux données
 		public UtilisateurService(IUtilisateurRepository<D.Utilisateur> utilisateurRepository)
 		{
 			_utilisateurRepository = utilisateurRepository;

@@ -28,12 +28,14 @@ namespace ASP_MVC.Controllers
 
 			try
 			{
+				// Création(insert) de l'utilisateur
 				Guid userId = _utilisateurService.Insert(new Utilisateur
 				{
 					Pseudo = form.Pseudo,
 					MotDePasse = form.MotDePasse
 				});
 
+				// Connexion automatique si inscription réussie
 				if (userId != Guid.Empty)
 				{
 					HttpContext.Session.SetString("UserPseudo", form.Pseudo);
@@ -65,9 +67,11 @@ namespace ASP_MVC.Controllers
 				return RedirectToAction("Connexion", "Auth"); // Rediriger vers la connexion si non connecté
 			}
 
+			// Récupérer les infos de l'utilisateur
 			Guid userId = Guid.Parse(userIdString);
 			Utilisateur utilisateur = _utilisateurService.GetById(userId);
 
+			// Redirection si utilisateur non trouvé
 			if (utilisateur == null)
 			{
 				return RedirectToAction("Connexion", "Auth");
@@ -94,6 +98,7 @@ namespace ASP_MVC.Controllers
 
 			try
 			{
+				// Mise à jour du pseudo
 				Guid userId = Guid.Parse(HttpContext.Session.GetString("UserId")!);
 				_utilisateurService.UpdatePseudo(userId, nouveauPseudo);
 				HttpContext.Session.SetString("UserPseudo", nouveauPseudo);
@@ -102,7 +107,7 @@ namespace ASP_MVC.Controllers
 			}
 			catch (Exception ex)
 			{
-				ViewBag.Error = "Une erreur s'est produite : " + ex.Message;
+				ViewBag.Error = "Une erreur s'est prodiute : " + ex.Message;
 			}
 
 			return View();

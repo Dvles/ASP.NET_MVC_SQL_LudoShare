@@ -11,6 +11,7 @@ namespace ASP_MVC.Controllers
 	{
 		private readonly UtilisateurService _utilisateurService;
 
+		// Injection du service utilisateur (BLL)
 		public AuthController(UtilisateurService utilisateurService)
 		{
 			_utilisateurService = utilisateurService ?? throw new ArgumentNullException(nameof(utilisateurService));
@@ -38,8 +39,10 @@ namespace ASP_MVC.Controllers
 					throw new Exception("_utilisateurService is NOT initialized! Check dependency injection.");
 				}
 
+				// Vérification des identifiants
 				Guid userId = _utilisateurService.CheckPassword(form.Pseudo, form.MotDePasse);
 
+				// Connexion réussie → stocker dans la session
 				if (userId != Guid.Empty)
 				{
 					HttpContext.Session.SetString("UserPseudo", form.Pseudo);
@@ -48,11 +51,13 @@ namespace ASP_MVC.Controllers
 					return RedirectToAction("Index", "Home");
 				}
 
+				// Identifiants invalides
 				ViewBag.Error = "Pseudo ou mot de passe incorrect.";
 				return View(form);
 			}
 			catch (Exception ex)
 			{
+				// Gestion des erreurs
 				Console.WriteLine($"Exception in Connexion: {ex.Message}");
 				ViewBag.Error = "Une erreur s'est produite : " + ex.Message;
 				return View(form);
@@ -61,11 +66,10 @@ namespace ASP_MVC.Controllers
 
 
 
-
-		// Déconnexion
+		// Déconnexion et suppression de la session
 		public ActionResult Deconnexion()
 		{
-			HttpContext.Session.Remove("UserPseudo");
+			HttpContext.Session.Remove("UserPseudo"); // (à config)
 			return RedirectToAction("Connexion");
 		}
 
