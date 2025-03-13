@@ -1,0 +1,9 @@
+﻿@model BLL.Entities.Utilisateur
+
+<h2>Mon Profil</h2>
+
+<p><strong>Pseudo :</strong> @Model.Pseudo</p>
+<p><strong>Date de création :</strong> @Model.DateCreation.ToString("dd/MM/yyyy")</p>
+
+<a href="@Url.Action("ModifierPseudo", "Utilisateur")">Modifier mon pseudo</a> |
+<a href="@Url.Action("DesactiverCompte", "Utilisateur")" onclick="return confirm('Voulez-vous vraiment désactiver votre compte ?');">Désactiver mon compte</a>

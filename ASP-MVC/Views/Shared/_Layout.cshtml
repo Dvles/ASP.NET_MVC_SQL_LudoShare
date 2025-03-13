@@ -28,6 +28,19 @@
                     </ul>
                 </div>
             </div>
+            @if (Context.Session.GetString("UserId") != null)
+            {
+                <a href="@Url.Action("Profil", "Utilisateur")">Mon Profil</a>
+                <a href="@Url.Action("Deconnexion", "Auth")">Déconnexion</a>
+            }
+            else
+            {
+                <a href="@Url.Action("Connexion", "Auth")">Connexion</a>
+                <a href="@Url.Action("Inscription", "Utilisateur")">S'inscrire</a>
+            }
+
+
+
         </nav>
     </header>
     <div class="container">
