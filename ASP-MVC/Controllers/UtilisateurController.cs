@@ -108,6 +108,40 @@ namespace ASP_MVC.Controllers
 			return View();
 		}
 
+		// Soft Delete
+
+		[HttpGet]
+		public IActionResult DesactiverCompte()
+		{
+			return View();
+		}
+
+		[HttpPost]
+		public IActionResult DesactiverCompteConfirmation()
+		{
+			try
+			{
+				// Récupération de l'ID de l'utilisateur connecté
+				if (!Guid.TryParse(HttpContext.Session.GetString("UserId"), out Guid userId))
+				{
+					return RedirectToAction("Connexion", "Auth"); // Redirige vers la connexion si l'ID est introuvable
+				}
+
+				// Désactiver l'utilisateur
+				_utilisateurService.Deactivate(userId);
+
+				// Suppression de la session (déconnexion)
+				HttpContext.Session.Clear();
+
+				return RedirectToAction("Connexion", "Auth");
+			}
+			catch (Exception ex)
+			{
+				ViewBag.Error = "Une erreur s'est prodiute : " + ex.Message;
+				return View("DesactiverCompte");
+			}
+		}
+
 
 
 	}
