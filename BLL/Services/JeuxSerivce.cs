@@ -14,7 +14,6 @@ namespace BLL.Services
 
 
 		// Injection de dépendance via le constructeur (évite l'instanciation directe et facilite les tests unitaires).  
-
 		public JeuxService(IJeuxRepository<DAL.Entities.Jeux> dalService)
 		{
 			_dalService = dalService ?? throw new ArgumentNullException(nameof(dalService));

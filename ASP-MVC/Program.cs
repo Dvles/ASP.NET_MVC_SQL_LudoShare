@@ -26,13 +26,18 @@ namespace ASP_MVC
 			// Ajoute l'accès au contexte HTTP pour récupérer des informations utilisateur dans les services
 			builder.Services.AddHttpContextAccessor();
 
-			/// Injection du service de la DAL et BLL :
+			/// Injection du service de la DAL et BLL -> Utilisateur:
 			// Associe l'interface générique à la classe associée
 			builder.Services.AddScoped<IUtilisateurRepository<DAL.Entities.Utilisateur>, DAL.Services.UtilisateurService>(); // service gèrant directement les requêtes SQL et l'accès à la base de données
 
 			builder.Services.AddScoped<IUtilisateurRepository<BLL.Entities.Utilisateur>, BLL.Services.UtilisateurService>(); // service agissant comme un intermédiaire entre le contrôleur et la DAL
 
 			builder.Services.AddScoped<BLL.Services.UtilisateurService>(); // Injection directe du service BLL pour éviter d'avoir à le résoudre via l'interface
+
+			// Injection du service DAL et BLL -> Jeux
+			builder.Services.AddScoped<IJeuxRepository<DAL.Entities.Jeux>, DAL.Services.JeuxService>();
+			builder.Services.AddScoped<IJeuxRepository<BLL.Entities.Jeux>, BLL.Services.JeuxService>();
+			builder.Services.AddScoped<BLL.Services.JeuxService>();
 
 			var app = builder.Build();
 
