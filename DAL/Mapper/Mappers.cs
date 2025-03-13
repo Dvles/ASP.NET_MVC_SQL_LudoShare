@@ -27,5 +27,27 @@ namespace DAL.Mapper
 			};
 
 		}
+
+		public static Jeux ToJeux(this IDataRecord record)
+		{
+			if (record is null) throw new ArgumentNullException(nameof(record));
+
+			return new Jeux()
+			{
+				Jeux_Id = (Guid)record[nameof(Jeux.Jeux_Id)],
+				Nom = (string)record[nameof(Jeux.Nom)],
+				Description = (string)record[nameof(Jeux.Description)],
+
+				AgeMin = (int)record[nameof(Jeux.AgeMin)],
+				AgeMax = (int)record[nameof(Jeux.AgeMax)],
+				NbJoueurMin = (int)record[nameof(Jeux.NbJoueurMin)],
+				NbJoueurMax = (int)record[nameof(Jeux.NbJoueurMax)],
+				DureeMinute = (int)record[nameof(Jeux.DureeMinute)],
+
+				DateCreation = (DateTime)record[nameof(Jeux.DateCreation)]
+			};
+		}
+
+
 	}
 }

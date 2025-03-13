@@ -1,12 +1,12 @@
 ﻿CREATE PROCEDURE SP_Jeux_GetAll_Filtered
     @NomPattern NVARCHAR(64) = NULL,
     @Tag NVARCHAR(64) = NULL,
-    @AgeMin TINYINT = NULL,
-    @AgeMax TINYINT = NULL,
-    @NbJoueurMin TINYINT = NULL,
-    @NbJoueurMax TINYINT = NULL,
-    @DureeMin SMALLINT = NULL,
-    @DureeMax SMALLINT = NULL
+    @AgeMin INT = NULL,
+    @AgeMax INT = NULL,
+    @NbJoueurMin INT = NULL,
+    @NbJoueurMax INT = NULL,
+    @DureeMin INT = NULL,
+    @DureeMax INT = NULL -- INT TO AVOID CONVERSIONS STEPS WITH TINYINT
 AS
 BEGIN
     SET NOCOUNT ON; -- better sql performance
