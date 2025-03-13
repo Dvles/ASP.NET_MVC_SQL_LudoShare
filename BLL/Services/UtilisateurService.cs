@@ -15,7 +15,7 @@ namespace BLL.Services
 		// Référence au dépôt d'accès aux données des utilisateurs (DAL).  
 		private readonly IUtilisateurRepository<D.Utilisateur> _utilisateurRepository;
 
-		// Constructeur qui injecte le dépôt d'utilisateurs (DAL) pour gérer l'accès aux données
+		// Constructeur qui injecte le dépôt d'utilisateurs (DAL) pour gérer l'accès aux données (facilite modularité (remplacement implémentation) + test unitaire).
 		public UtilisateurService(IUtilisateurRepository<D.Utilisateur> utilisateurRepository)
 		{
 			_utilisateurRepository = utilisateurRepository;

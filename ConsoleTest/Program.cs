@@ -3,7 +3,7 @@ using BLL.Services;
 using b = BLL.Entities;
 using BLL.Mappers;
 using Common.Repositories;
-using FakeRepository;
+// using FakeRepository;
 using D = DAL.Entities;
 using System.Collections.Generic;
 using DAL.Services;
@@ -194,14 +194,16 @@ namespace ConsoleTest
 		}*/
 			///// TEST JEUX ////
 
+			/*	//DAL		
 			JeuxService jeuxService = new JeuxService();
 
+			// DAL TEST GETALL
 			Console.WriteLine("===== Test GetAll() =====");
 			foreach (Jeux jeu in jeuxService.GetAll())
 			{
 				Console.WriteLine($"{jeu.Jeux_Id} - {jeu.Nom} ({jeu.AgeMin}-{jeu.AgeMax} ans) {jeu.NbJoueurMin}-{jeu.NbJoueurMax} joueurs");
 			}
-
+			// DAL TEST INSERT
 			Console.WriteLine("\n===== Test Insert() =====");
 			Jeux nouveauJeu = new Jeux
 			{
@@ -217,11 +219,50 @@ namespace ConsoleTest
 			Guid newGameId = jeuxService.Insert(nouveauJeu);
 			Console.WriteLine($"Jeu inséré avec succès =) Well done! ID: {newGameId}");
 
+			// DAL TEST GETBYID
 			Console.WriteLine("\n===== Test GetById() =====");
 			Jeux jeuTrouve = jeuxService.GetById(newGameId);
-			Console.WriteLine($"Jeu trouvé: {jeuTrouve.Nom} - {jeuTrouve.Description}");
+			Console.WriteLine($"Jeu trouvé: {jeuTrouve.Nom} - {jeuTrouve.Description}");*/
+
+			// BLL
+
+			// Instanciation du service BLL avec la vraie DAL
+			IJeuxRepository<b.Jeux> jeuxService = new BLL.Services.JeuxService(new DAL.Services.JeuxService());
+
+			// BLL TEST GET ALL
+			Console.WriteLine("===== TEST GetAll() =====");
+			foreach (var jeu in jeuxService.GetAll())
+			{
+				Console.WriteLine($"ID: {jeu.Jeux_Id} | Nom: {jeu.Nom} | Âge Min: {jeu.AgeMin}");
+			}
+
+			// BLL TEST GETBYID
+			Console.WriteLine("\n===== TEST GetById() =====");
+			Guid testId = new Guid("0edbf005-2ba0-4cc5-9205-cf5e441f6468"); 
+			b.Jeux jeuTrouve = jeuxService.GetById(testId);
+			Console.WriteLine($"Nom du jeu trouvé : {jeuTrouve.Nom}");
+			
+			// BLL TEST INSERT
+			Console.WriteLine("\n===== TEST Insert() =====");
+			b.Jeux newJeu = new b.Jeux
+			{
+				Nom = "Cards against humanity",
+				Description = "Cards Against Humanity is a fill-in-the-blank party game that turns your awkward personality and lackluster social skills into hours of fun",
+				AgeMin = 18,
+				AgeMax = 99,
+				NbJoueurMin = 3,
+				NbJoueurMax = 6,
+				DureeMinute = 35
+			};
+
+			Guid newJeuId = jeuxService.Insert(newJeu);
+			Console.WriteLine($"Nouveau jeu inséré avec l'ID : {newJeuId}");
+
+			Console.WriteLine("\n===== FIN DES TESTS =====");
+			Console.ReadLine();
 		}
 
 	}
+
 }
 

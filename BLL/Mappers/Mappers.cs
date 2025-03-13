@@ -41,5 +41,41 @@ namespace BLL.Mappers
 				DateDesactivation = utilisateur.DateDesactivation
 			};
 		}
+
+		// Convertit un utilisateur DAL en BLL en mappant ses propriétés
+
+		public static Jeux ToBLL(this DAL.Entities.Jeux jeu)
+		{
+			return new Jeux
+			{
+				Jeux_Id = jeu.Jeux_Id,
+				Nom = jeu.Nom,
+				Description = jeu.Description,
+				AgeMin = jeu.AgeMin,
+				AgeMax = jeu.AgeMax,
+				NbJoueurMin = jeu.NbJoueurMin,
+				NbJoueurMax = jeu.NbJoueurMax,
+				DureeMinute = jeu.DureeMinute,
+				DateCreation = jeu.DateCreation
+			};
+		}
+		// Convertit un utilisateur BLL en DAL en mappant ses propriétés.
+
+		public static DAL.Entities.Jeux ToDAL(this Jeux jeu)
+		{
+			return new DAL.Entities.Jeux
+			{
+				Jeux_Id = jeu.Jeux_Id,
+				Nom = jeu.Nom,
+				Description = jeu.Description,
+				AgeMin = jeu.AgeMin,
+				AgeMax = jeu.AgeMax,
+				NbJoueurMin = jeu.NbJoueurMin,
+				NbJoueurMax = jeu.NbJoueurMax,
+				DureeMinute = jeu.DureeMinute,
+				DateCreation = jeu.DateCreation
+			};
+		}
 	}
 }
+
