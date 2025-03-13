@@ -8,11 +8,12 @@ namespace ASP_MVC.Controllers
 {
 	public class UtilisateurController : Controller
 	{
+		// Injection du service BLL  
 		private readonly UtilisateurService _utilisateurService;
 
 		public UtilisateurController(UtilisateurService utilisateurService)
 		{
-			_utilisateurService = utilisateurService ?? throw new ArgumentNullException(nameof(utilisateurService));
+			_utilisateurService = utilisateurService ?? throw new ArgumentNullException(nameof(utilisateurService)); // Vérifie null (bonne pratique pour tests unitaires sans DI)
 		}
 		// inscription 
 		[HttpGet]

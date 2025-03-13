@@ -97,7 +97,7 @@ namespace DAL.Services
 						}
 						else
 						{
-							throw new ArgumentOutOfRangeException(nameof(utilisateurId));
+							return null;
 						}
 					}
 				}

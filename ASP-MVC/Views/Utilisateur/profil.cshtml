@@ -9,14 +9,8 @@
 <!-- handlers pour navigation sécurisée -->
 <a asp-action="ModifierPseudo" asp-controller="Utilisateur">Modifier mon pseudo</a>
 
-<!-- Formulaire pour désactiver le compte -->
+<a asp-action="DesactiverCompte" asp-controller="Utilisateur"
+   class="btn btn-danger">
+    Désactiver mon compte
+</a>
 
-<form asp-action="DesactiverCompte" asp-controller="Utilisateur" method="get"
-      onsubmit="return confirm('Voulez-vous vraiment désactiver votre compte ?');"
-      style="display:inline;">
-
-    <button type="submit"
-            style="background-color: red; color: white; border: none; padding: 5px 10px; cursor: pointer;">
-        Désactiver mon compte
-    </button>
-</form>

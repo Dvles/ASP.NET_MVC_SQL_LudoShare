@@ -1,6 +1,11 @@
 ﻿@model BLL.Entities.Jeux
 
 <h1>@Model.Nom</h1>
-<p><strong>Âge minimum :</strong> @Model.AgeMin+</p>
+
 <p><strong>Description :</strong> @Model.Description</p>
-<a href="@Url.Action("Index", "Home")">Retour</a>
+<p><strong>Âge recommandé :</strong> @Model.AgeMin - @Model.AgeMax ans</p>
+<p><strong>Nombre de joueurs :</strong> @Model.NbJoueurMin - @Model.NbJoueurMax</p>
+<p><strong>Durée moyenne :</strong> @Model.DureeMinute minutes</p>
+<p><strong>Date d'ajout :</strong> @Model.DateCreation.ToString("dd/MM/yyyy HH:mm")</p>
+
+<a href="@Url.Action("Index", "Home")" class="btn btn-secondary">Retour</a>

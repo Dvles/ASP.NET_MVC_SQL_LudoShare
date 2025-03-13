@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<BLL.Entities.Jeux>
 
 <h1>TOP Jeux</h1>
-<p> Bientôt</p> @* emplacement pour les jeux les plus empruntés *@
+<p> Bientôto les des 10 jeux les plus emprunté</p> @* emplacement pour les jeux les plus empruntés *@
 
 <h1>Tous les Jeux</h1>
 
@@ -12,13 +12,13 @@
         {
             <li>
                 <strong>@jeu.Nom</strong><br>
-                Âge: @jeu.AgeMin+ <br>
-                <small>@jeu.Description</small><br>
+                @jeu.AgeMin+ ans <br>
+                
 
                 <!-- Bouton "Voir plus" qui redirige vers la page détails du jeu -->
                 <a asp-controller="Jeux" asp-action="Details" asp-route-id="@jeu.Jeux_Id" class="btn btn-primary">
                     Voir plus
-                </a>
+                </a><br/>
             </li>
         }
     </ul>

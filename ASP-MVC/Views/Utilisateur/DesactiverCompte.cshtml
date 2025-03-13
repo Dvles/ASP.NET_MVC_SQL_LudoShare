@@ -8,10 +8,12 @@
 @if (ViewBag.Error != null)
 {
     <p style="color: red;">@ViewBag.Error</p>
-}
+} 
 
 <form asp-action="DesactiverCompteConfirmation" method="post">
     <button type="submit" class="btn btn-danger">Oui, désactiver mon compte</button>
-    <a asp-action="Details" class="btn btn-secondary">Annuler</a>
+    @* Bouton qui récupère l'ID de l'utilisateur connecté *@.
+    <a asp-action="Details" asp-controller="Utilisateur" asp-route-id="@Context.Session.GetString("UserId")"
+       class="btn btn-secondary">Annuler</a>  
 </form>
 

@@ -1,0 +1,49 @@
+﻿@model ASP_MVC.Models.JeuxCreateForm
+
+<h2>Ajouter un jeu</h2>
+
+<form asp-action="Ajouter" method="post">
+    <div class="form-group">
+        <label asp-for="Nom"></label>
+        <input asp-for="Nom" class="form-control" />
+        <span asp-validation-for="Nom" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="AgeMin"></label>
+        <input asp-for="AgeMin" type="number" class="form-control" />
+        <span asp-validation-for="AgeMin" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="AgeMax"></label>
+        <input asp-for="AgeMax" type="number" class="form-control" />
+        <span asp-validation-for="AgeMax" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="NbJoueurMin"></label>
+        <input asp-for="NbJoueurMin" type="number" class="form-control" />
+        <span asp-validation-for="NbJoueurMin" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="NbJoueurMax"></label>
+        <input asp-for="NbJoueurMax" type="number" class="form-control" />
+        <span asp-validation-for="NbJoueurMax" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="DureeMinute"></label>
+        <input asp-for="DureeMinute" type="number" class="form-control" />
+        <span asp-validation-for="DureeMinute" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Ajouter</button>
+</form>

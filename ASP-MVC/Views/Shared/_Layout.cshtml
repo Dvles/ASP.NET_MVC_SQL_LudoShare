@@ -3,6 +3,8 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Titre du site, dynamique grâce à ViewData -->
     <title>@ViewData["Title"] LudoShare </title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
@@ -12,7 +14,8 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ASP_MVC</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">LudoShare</a>
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -25,18 +28,24 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
+                        @if (Context.Session.GetString("UserId") != null)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link btn btn-primary text-white" asp-controller="Jeux" asp-action="Ajouter">Ajouter un jeu</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>
             @if (Context.Session.GetString("UserId") != null)
             {
-                <a href="@Url.Action("Profil", "Utilisateur")">Mon Profil</a>
-                <a href="@Url.Action("Deconnexion", "Auth")">Déconnexion</a>
+                <a href="@Url.Action("Profil", "Utilisateur")" class="ms-3">Profil</a>
+                <a href="@Url.Action("Deconnexion", "Auth")" class="ms-3">Déconnexion</a>
             }
             else
             {
-                <a href="@Url.Action("Connexion", "Auth")">Connexion</a>
-                <a href="@Url.Action("Inscription", "Utilisateur")">S'inscrire</a>
+                <a href="@Url.Action("Connexion", "Auth")" class="ms-3">Connexion</a>
+                <a href="@Url.Action("Inscription", "Utilisateur")" class="ms-3">S'inscrire</a>
             }
 
 
@@ -51,7 +60,8 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2025 - ASP_MVC - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2025 - LudoShare - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
