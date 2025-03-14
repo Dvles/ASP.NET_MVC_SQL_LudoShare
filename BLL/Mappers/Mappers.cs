@@ -78,6 +78,21 @@ namespace BLL.Mappers
 				DateCreation = jeu.DateCreation
 			};
 		}
+
+		
+		public static Tag ToBLL(this D.Tag tag)
+		{
+			if (tag == null) throw new ArgumentNullException(nameof(tag));
+
+			return new Tag
+			{
+				Tag_Id = tag.Tag_Id,
+				Nom = tag.Nom
+			};
+			
+		}
+
+
 	}
 }
 
