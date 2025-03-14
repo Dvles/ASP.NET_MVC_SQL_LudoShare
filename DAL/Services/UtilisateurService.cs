@@ -105,7 +105,6 @@ namespace DAL.Services
 			}
 		}
 
-
 		public void Deactivate(Guid utilisateurId)
 		{
 			using (SqlConnection connection = new SqlConnection(connectionString))
@@ -125,6 +124,30 @@ namespace DAL.Services
 				}
 			}
 		}
+
+		// TO REMOVE IF ALL WORKS FINE WITH CHECKPASSWORD
+		//public Utilisateur? GetByEmail(string email)
+		//{
+		//	using (SqlConnection connection = new SqlConnection(connectionString))
+		//	{
+		//		using (SqlCommand command = connection.CreateCommand())
+		//		{
+		//			command.CommandText = "SP_Utilisateur_GetByEmail";
+		//			command.CommandType = CommandType.StoredProcedure;
+		//			command.Parameters.AddWithValue("@Email", email);
+		//			connection.Open();
+		//			using (SqlDataReader reader = command.ExecuteReader())
+		//			{
+		//				if (reader.Read())
+		//				{
+		//					return reader.ToUtilisateur();
+		//				}
+		//			}
+		//		}
+		//	}
+		//	return null; // Retourne null si aucun utilisateur trouvé
+		//}
+
 
 	}
 }

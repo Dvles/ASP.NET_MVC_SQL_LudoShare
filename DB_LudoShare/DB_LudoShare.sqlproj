@@ -84,6 +84,7 @@
     <Build Include="Stored Procedures\SP_Utilisateur_CheckPassword.sql" />
     <Build Include="Functions\SF_SaltAndHash.sql" />
     <Build Include="Stored Procedures\SP_Jeux_GetAll.sql" />
+    <Build Include="Stored Procedures\SP_Utilisateur_GetByEmail.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DB_LudoShare.publish.xml" />

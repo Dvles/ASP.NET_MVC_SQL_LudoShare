@@ -31,33 +31,29 @@ namespace ASP_MVC.Controllers
 			{
 				if (!ModelState.IsValid) return View(form);
 
-				// Debug log: Check if _utilisateurService is null
-				Console.WriteLine($"_utilisateurService est null ? {_utilisateurService == null}");
-
 				if (_utilisateurService == null)
 				{
 					throw new Exception("_utilisateurService is NOT initialized! Check dependency injection.");
 				}
 
-				// Vérification des identifiants
+				// Vérification des identifiants → Retourne un GUID (ou Guid.Empty si invalide OU désactivé)
 				Guid userId = _utilisateurService.CheckPassword(form.Email, form.MotDePasse);
 
-				// Connexion réussie → stocker dans la session
-				if (userId != Guid.Empty)
+				if (userId == Guid.Empty)
 				{
-					HttpContext.Session.SetString("UserEmail", form.Email);
-					HttpContext.Session.SetString("UserId", userId.ToString());
-
-					return RedirectToAction("Index", "Home");
+					// Identifiants invalides ou compte désactivé
+					ViewBag.Error = "Email ou mot de passe incorrect, ou compte désactivé.";
+					return View(form);
 				}
 
-				// Identifiants invalides
-				ViewBag.Error = "Email ou mot de passe incorrect.";
-				return View(form);
+				// Connexion réussie → stocker dans la session
+				HttpContext.Session.SetString("UserEmail", form.Email);
+				HttpContext.Session.SetString("UserId", userId.ToString());
+
+				return RedirectToAction("Index", "Home");
 			}
 			catch (Exception ex)
 			{
-				// Gestion des erreurs
 				Console.WriteLine($"Exception in Connexion: {ex.Message}");
 				ViewBag.Error = "Une erreur s'est produite : " + ex.Message;
 				return View(form);
@@ -65,10 +61,13 @@ namespace ASP_MVC.Controllers
 		}
 
 
+
+
+
 		// Déconnexion et suppression de la session
 		public ActionResult Deconnexion()
 		{
-			HttpContext.Session.Remove("UserPseudo"); // (à config)
+			HttpContext.Session.Remove("UserPseudo");
 			return RedirectToAction("Connexion");
 		}
 

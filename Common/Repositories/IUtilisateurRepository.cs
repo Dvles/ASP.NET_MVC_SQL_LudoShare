@@ -15,8 +15,7 @@ namespace Common.Repositories
 		public Guid Insert(TUtilisateur utilisateur);
 		public void UpdatePseudo(Guid utilisateurId, string nouveauPseudo);
 		TUtilisateur GetById(Guid utilisateurId);
-		void Deactivate(Guid utilisateurId);  
-
+		void Deactivate(Guid utilisateurId);
 
 	}
 }
