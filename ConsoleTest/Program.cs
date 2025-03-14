@@ -1,5 +1,5 @@
 ﻿using System;
-using BLL.Services;
+// using BLL.Services;
 using b = BLL.Entities;
 using BLL.Mappers;
 using Common.Repositories;
@@ -224,7 +224,7 @@ namespace ConsoleTest
 			Jeux jeuTrouve = jeuxService.GetById(newGameId);
 			Console.WriteLine($"Jeu trouvé: {jeuTrouve.Nom} - {jeuTrouve.Description}");*/
 
-			// BLL
+			/* // BLL
 
 			// Instanciation du service BLL avec la vraie DAL
 			IJeuxRepository<b.Jeux> jeuxService = new BLL.Services.JeuxService(new DAL.Services.JeuxService());
@@ -259,9 +259,50 @@ namespace ConsoleTest
 			Console.WriteLine($"Nouveau jeu inséré avec l'ID : {newJeuId}");
 
 			Console.WriteLine("\n===== FIN DES TESTS =====");
-			Console.ReadLine();
-		}
+			Console.ReadLine();*/
 
+			///// TEST TAGS ////
+			
+			/*	// DAL
+			TagService tagService = new TagService();
+
+			// INSERT //
+			string tagName = "Toystory"; 
+			int insertedTagId = tagService.Insert(tagName);
+			Console.WriteLine($"Inserted tag '{tagName}' with ID: {insertedTagId}");
+
+			if (insertedTagId > 0)
+			{
+				Console.WriteLine($"Tag with ID {insertedTagId} inserted");
+			}
+			else
+			{
+				Console.WriteLine($"The tag '{tagName}' with ID {insertedTagId} was not found in the database.");
+			}
+
+			// TEST GET ALL
+			List<Tag> tags = tagService.GetAll();
+
+
+			if (tags.Count > 0)
+			{
+				Console.WriteLine("Tags retrieved from the database:");
+				foreach (var tag in tags)
+				{
+					Console.WriteLine($"ID: {tag.Tag_Id}, Name: {tag.Nom}");
+				}
+			}
+			else
+			{
+				Console.WriteLine("No tags found in the database.");
+			}*/
+
+			
+
+
+
+
+		}
 	}
 
 }
