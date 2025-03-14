@@ -1,0 +1,14 @@
+﻿<!-- AddTag.cshtml -->
+@{
+    ViewData["Title"] = "Add Tag";
+}
+
+<h1>Add a New Tag</h1>
+
+<form asp-action="Ajouter" method="post">
+    <div class="form-group">
+        <label for="TagName">Tag Name</label>
+        <input type="text" name="tagName" id="TagName" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Add Tag</button>
+</form>

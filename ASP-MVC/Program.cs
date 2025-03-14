@@ -39,6 +39,10 @@ namespace ASP_MVC
 			builder.Services.AddScoped<IJeuxRepository<BLL.Entities.Jeux>, BLL.Services.JeuxService>();
 			builder.Services.AddScoped<BLL.Services.JeuxService>();
 
+			// Injection du service DAL et BLL -> Tag
+			builder.Services.AddScoped<ITagRepository<DAL.Entities.Tag>, DAL.Services.TagService>();
+			builder.Services.AddScoped<BLL.Services.TagService>(); 
+
 			var app = builder.Build();
 
 			if (!app.Environment.IsDevelopment())

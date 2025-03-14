@@ -22,21 +22,21 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
+
                         @if (Context.Session.GetString("UserId") != null)
                         {
                             <li class="nav-item">
-                                <a class="nav-link btn btn-primary text-white" asp-controller="Jeux" asp-action="Ajouter">Ajouter un jeu</a>
+                                <a class="nav-link text-dark" asp-controller="Tag" asp-action="Ajouter">+Tag</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Jeux" asp-action="Ajouter">+Jeu</a>
                             </li>
                         }
                     </ul>
                 </div>
             </div>
+
+            <!-- Liens spécifique aux utilisateurs --!>
             @if (Context.Session.GetString("UserId") != null)
             {
                 <a href="@Url.Action("Profil", "Utilisateur")" class="ms-3">Profil</a>
@@ -47,11 +47,9 @@
                 <a href="@Url.Action("Connexion", "Auth")" class="ms-3">Connexion</a>
                 <a href="@Url.Action("Inscription", "Utilisateur")" class="ms-3">S'inscrire</a>
             }
-
-
-
         </nav>
     </header>
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
