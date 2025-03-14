@@ -6,6 +6,10 @@ namespace ASP_MVC.Models.Utilisateur
 	{
 
 		[Required]
+		[EmailAddress]
+		public string Email { get; set; }
+
+		[Required]
 		public string Pseudo { get; set; }
 
 		[Required, DataType(DataType.Password)]

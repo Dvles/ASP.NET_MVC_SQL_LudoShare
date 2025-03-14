@@ -4,6 +4,11 @@
 <h2>Inscription</h2>
 <form asp-action="Inscription" method="post">
     <div>
+        <label>Email :</label>
+        <input asp-for="Email" />
+        <span asp-validation-for="Email"></span>
+    </div>
+    <div>
         <label>Pseudo :</label>
         <input asp-for="Pseudo" />
         <span asp-validation-for="Pseudo"></span>

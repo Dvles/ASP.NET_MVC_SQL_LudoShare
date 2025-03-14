@@ -9,14 +9,16 @@ namespace BLL.Entities
 	public class Utilisateur
 	{
 		public Guid Utilisateur_Id { get; set; }
+		public string Email { get; set; }
 		public string Pseudo { get; set; }
 		public string MotDePasse { get; set; }
 		public DateTime DateCreation { get; set; }
 		public DateTime? DateDesactivation { get; set; }
 
-		public Utilisateur(Guid utilisateur_Id, string pseudo, DateTime dateCreation, DateTime? dateDesactivation)
+		public Utilisateur(Guid utilisateur_Id, string email, string pseudo, DateTime dateCreation, DateTime? dateDesactivation)
 		{
 			Utilisateur_Id = utilisateur_Id;
+			Email = email;
 			Pseudo = pseudo;
 			DateCreation = dateCreation;
 			DateDesactivation = dateDesactivation;

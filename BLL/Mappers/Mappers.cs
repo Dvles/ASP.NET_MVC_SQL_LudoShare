@@ -20,6 +20,7 @@ namespace BLL.Mappers
 			return new Utilisateur
 			{
 				Utilisateur_Id = utilisateur.Utilisateur_Id,
+				Email= utilisateur.Email,
 				Pseudo = utilisateur.Pseudo,
 				MotDePasse = utilisateur.MotDePasse,
 				DateCreation = utilisateur.DateCreation,
@@ -35,6 +36,7 @@ namespace BLL.Mappers
 			return new D.Utilisateur
 			{
 				Utilisateur_Id = utilisateur.Utilisateur_Id,
+				Email = utilisateur.Email,
 				Pseudo = utilisateur.Pseudo,
 				MotDePasse = utilisateur.MotDePasse,
 				DateCreation = utilisateur.DateCreation,

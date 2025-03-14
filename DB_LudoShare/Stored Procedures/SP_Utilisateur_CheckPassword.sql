@@ -1,10 +1,10 @@
 ﻿CREATE PROCEDURE [dbo].[SP_Utilisateur_CheckPassword]
-	@pseudo NVARCHAR(320),
+	@email NVARCHAR(320),
 	@motDePasse NVARCHAR(64)
 AS
 BEGIN
 	SELECT [Utilisateur_Id]
 		FROM [Utilisateur]
-		WHERE	[Pseudo] = @pseudo
+		WHERE	[Email] = @email
 			AND [MotDePasse] = [dbo].[SF_SaltAndHash](@motDePasse,[Salt])
 END

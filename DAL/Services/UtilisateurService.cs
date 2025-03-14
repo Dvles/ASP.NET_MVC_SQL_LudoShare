@@ -15,7 +15,7 @@ namespace DAL.Services
     {
 		private const string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=DB_LudoShare;Integrated Security=True;";
 
-		public Guid CheckPassword(string pseudo, string motDePasse)
+		public Guid CheckPassword(string email, string motDePasse)
 		{
 			using (SqlConnection connection = new SqlConnection(connectionString)) // Création de la connexion SQL
 			{
@@ -23,7 +23,7 @@ namespace DAL.Services
 				{
 					command.CommandText = "SP_Utilisateur_CheckPassword"; // Nom du stored procedure
 					command.CommandType = CommandType.StoredProcedure; // Spécifie qu'on appelle un SP
-					command.Parameters.AddWithValue(nameof(pseudo), pseudo); // Ajoute le paramètre "pseudo"
+					command.Parameters.AddWithValue(nameof(email), email); // Ajoute le paramètre "email"
 					command.Parameters.AddWithValue(nameof(motDePasse), motDePasse); // Ajoute le paramètre "motDePasse"
 
 					connection.Open(); // Ouvre la connexion à la base de données
@@ -47,6 +47,7 @@ namespace DAL.Services
 				{
 					command.CommandText = "SP_Utilisateur_Insert";
 					command.CommandType = CommandType.StoredProcedure;
+					command.Parameters.AddWithValue(nameof(Utilisateur.Email), utilisateur.Email);
 					command.Parameters.AddWithValue(nameof(Utilisateur.Pseudo), utilisateur.Pseudo);
 					command.Parameters.AddWithValue(nameof(Utilisateur.MotDePasse), utilisateur.MotDePasse);
 					connection.Open();

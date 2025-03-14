@@ -21,6 +21,7 @@ namespace DAL.Mapper
 			return new Utilisateur()
 			{
 				Utilisateur_Id = (Guid)record["Utilisateur_Id"],
+				Email = (string)record["Email"],
 				Pseudo = (string)record["Pseudo"],
 				DateCreation = (DateTime)record["DateCreation"],
 				DateDesactivation = record["DateDesactivation"] is DBNull ? null : (DateTime?)record["DateDesactivation"]

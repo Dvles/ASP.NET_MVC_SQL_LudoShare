@@ -5,7 +5,7 @@ namespace ASP_MVC.Models.Auth
 	public class AuthLoginForm
 	{
 		[Required]
-		public string Pseudo { get; set; }
+		public string Email { get; set; }
 
 		[Required]
 		[DataType(DataType.Password)]

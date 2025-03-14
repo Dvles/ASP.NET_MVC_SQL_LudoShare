@@ -21,13 +21,14 @@ namespace BLL.Services
 			_utilisateurRepository = utilisateurRepository;
 		}
 
-		public Guid CheckPassword(string pseudo, string motDePasse)
+		public Guid CheckPassword(string email, string motDePasse)
 		{
-			return _utilisateurRepository.CheckPassword(pseudo, motDePasse);
+			return _utilisateurRepository.CheckPassword(email, motDePasse);
 		}
 
 		public Guid Insert(B.Utilisateur utilisateur)
 		{
+			
 			return _utilisateurRepository.Insert(utilisateur.ToDAL());
 		}
 

@@ -40,19 +40,19 @@ namespace ASP_MVC.Controllers
 				}
 
 				// Vérification des identifiants
-				Guid userId = _utilisateurService.CheckPassword(form.Pseudo, form.MotDePasse);
+				Guid userId = _utilisateurService.CheckPassword(form.Email, form.MotDePasse);
 
 				// Connexion réussie → stocker dans la session
 				if (userId != Guid.Empty)
 				{
-					HttpContext.Session.SetString("UserPseudo", form.Pseudo);
+					HttpContext.Session.SetString("UserEmail", form.Email);
 					HttpContext.Session.SetString("UserId", userId.ToString());
 
 					return RedirectToAction("Index", "Home");
 				}
 
 				// Identifiants invalides
-				ViewBag.Error = "Pseudo ou mot de passe incorrect.";
+				ViewBag.Error = "Email ou mot de passe incorrect.";
 				return View(form);
 			}
 			catch (Exception ex)

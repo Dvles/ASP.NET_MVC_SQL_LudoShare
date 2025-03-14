@@ -32,6 +32,7 @@ namespace ASP_MVC.Controllers
 				// Création(insert) de l'utilisateur
 				Guid userId = _utilisateurService.Insert(new Utilisateur
 				{
+					Email = form.Email,
 					Pseudo = form.Pseudo,
 					MotDePasse = form.MotDePasse
 				});
@@ -39,6 +40,7 @@ namespace ASP_MVC.Controllers
 				// Connexion automatique si inscription réussie
 				if (userId != Guid.Empty)
 				{
+					HttpContext.Session.SetString("UserEmail", form.Email);
 					HttpContext.Session.SetString("UserPseudo", form.Pseudo);
 					HttpContext.Session.SetString("UserId", userId.ToString());
 					return RedirectToAction("Index", "Home");
@@ -50,10 +52,10 @@ namespace ASP_MVC.Controllers
 			{
 				ViewBag.Error = "Une erreur s'est produite : " + ex.Message;
 			}
-
 			return View(form);
 
 		}
+
 
 
 		// détails profil
